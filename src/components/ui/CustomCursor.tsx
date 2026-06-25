@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
+  const [cursorTheme, setCursorTheme] = useState("orange");
 
   // Motion values for high-performance position tracking
   const mouseX = useMotionValue(-100);
@@ -40,6 +41,15 @@ export default function CustomCursor() {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
+
+      // Extract cursor theme from target or its closest parent
+      const themedParent = target.closest("[data-cursor-theme]");
+      if (themedParent) {
+        const theme = themedParent.getAttribute("data-cursor-theme");
+        setCursorTheme(theme || "orange");
+      } else {
+        setCursorTheme("orange");
+      }
 
       const isHoverable = 
         target.tagName === "A" || 
@@ -90,14 +100,20 @@ export default function CustomCursor() {
         }}
         className="relative flex items-center justify-center"
       >
-        {/* Core Dot (Brand Orange) */}
+        {/* Core Dot */}
         <motion.div
           animate={{
             width: isHovered ? 8 : 40,
             height: isHovered ? 8 : 40,
           }}
           transition={{ type: "spring", stiffness: 250, damping: 20 }}
-          className="rounded-full bg-brand-orange mix-blend-difference"
+          className={`rounded-full transition-colors duration-300 ${
+            cursorTheme === "purple" ? "bg-[#4B0082]" :
+            cursorTheme === "pink" ? "bg-[#FF1493]" :
+            cursorTheme === "green" ? "bg-[#00A86B]" :
+            cursorTheme === "white" ? "bg-white" :
+            "bg-brand-orange mix-blend-difference"
+          }`}
         />
 
         {/* Explore Text Ring */}
@@ -116,7 +132,13 @@ export default function CustomCursor() {
               d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
               fill="none"
             />
-            <text className="fill-brand-orange text-[9px] font-extrabold uppercase letter-spacing-[3px] font-display">
+            <text className={`transition-colors duration-300 text-[9px] font-extrabold uppercase letter-spacing-[3px] font-display ${
+              cursorTheme === "purple" ? "fill-[#4B0082]" :
+              cursorTheme === "pink" ? "fill-[#FF1493]" :
+              cursorTheme === "green" ? "fill-[#00A86B]" :
+              cursorTheme === "white" ? "fill-white" :
+              "fill-brand-orange"
+            }`}>
               <textPath href="#circlePath" startOffset="0%">
                 EXPLORE • TROPICAL • SUPERFOOD •
               </textPath>

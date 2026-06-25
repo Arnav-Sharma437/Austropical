@@ -47,7 +47,7 @@ export default function Hero() {
 
   return (
     <TropicalBackground color="orange">
-      <section className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pt-24 md:px-12 lg:px-24">
+      <section data-cursor-theme="purple" className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pt-24 md:px-12 lg:px-24">
       
       {/* Wave Overlay Background Graphic */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
