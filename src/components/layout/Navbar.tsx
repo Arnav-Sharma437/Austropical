@@ -58,11 +58,16 @@ export default function Navbar() {
   }, [pathname]);
 
   const allLinks = [...LEFT_LINKS, ...RIGHT_LINKS];
-  const linkColor = isScrolled ? "text-brand-dark hover:text-brand-orange" : "text-white hover:text-brand-orange";
-  const logoColor = isScrolled ? "text-brand-dark" : "text-white";
-  const secondaryLinkColor = isScrolled ? "text-brand-dark/70 hover:text-brand-dark" : "text-white/70 hover:text-white";
-  const iconColor = isScrolled ? "text-brand-dark hover:text-brand-orange" : "text-white hover:text-brand-orange";
-  const borderClass = isScrolled ? "border-brand-dark/10" : "border-white/10";
+  
+  // Dynamic color state based on whether the page has a dark hero or not
+  const hasHero = pathname === "/" || pathname === "/about" || pathname === "/sustainability";
+  const activeScrolled = isScrolled || !hasHero;
+
+  const linkColor = activeScrolled ? "text-brand-dark hover:text-brand-orange" : "text-white hover:text-brand-orange";
+  const logoColor = activeScrolled ? "text-brand-dark" : "text-white";
+  const secondaryLinkColor = activeScrolled ? "text-brand-dark/70 hover:text-brand-dark" : "text-white/70 hover:text-white";
+  const iconColor = activeScrolled ? "text-brand-dark hover:text-brand-orange" : "text-white hover:text-brand-orange";
+  const borderClass = activeScrolled ? "border-brand-dark/10" : "border-white/10";
 
   // Mobile menu animation variants
   const menuVariants = {
@@ -99,7 +104,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed left-0 right-0 top-0 z-[100] transition-all duration-300 ${
-          isScrolled
+          activeScrolled
             ? "border-b border-brand-dark/10 bg-[#FCF9F2]/80 py-4 backdrop-blur-md"
             : "bg-transparent py-6"
         }`}
