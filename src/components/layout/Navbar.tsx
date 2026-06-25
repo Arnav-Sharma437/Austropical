@@ -99,9 +99,17 @@ export default function Navbar() {
     visible: { y: 0, opacity: 1, transition: { type: "spring" as const, stiffness: 120, damping: 12 } }
   };
 
+  // Dynamic cursor theme when navbar is transparent and overlaying colored heroes
+  let navCursorTheme = "orange";
+  if (!isScrolled) {
+    if (pathname === "/") navCursorTheme = "purple";
+    else if (pathname === "/about" || pathname === "/sustainability") navCursorTheme = "white";
+  }
+
   return (
     <>
       <motion.nav
+        data-cursor-theme={navCursorTheme}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
