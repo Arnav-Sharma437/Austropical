@@ -4,25 +4,34 @@ import React, { useState } from "react";
 
 interface FruitPlaceholderProps {
   name: string;
-  basePath: string;
+  basePaths: string[];
   fallbackSvg: React.ReactNode;
   className?: string;
 }
 
-const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, basePath, fallbackSvg, className }) => {
+const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, basePaths, fallbackSvg, className }) => {
   const extensions = [".png", ".webp", ".jpg", ".jpeg", ".svg"];
-  const [extIndex, setExtIndex] = useState(0);
+  
+  // Flatten combinations of base paths and extensions
+  const candidates: string[] = [];
+  basePaths.forEach(base => {
+    extensions.forEach(ext => {
+      candidates.push(`${base}${ext}`);
+    });
+  });
+
+  const [candIndex, setCandIndex] = useState(0);
   const [imgFailed, setImgFailed] = useState(false);
 
   const handleImageError = () => {
-    if (extIndex < extensions.length - 1) {
-      setExtIndex(extIndex + 1);
+    if (candIndex < candidates.length - 1) {
+      setCandIndex(candIndex + 1);
     } else {
       setImgFailed(true);
     }
   };
 
-  const currentSrc = `${basePath}${extensions[extIndex]}`;
+  const currentSrc = candidates[candIndex];
 
   return (
     <div className={`relative select-none pointer-events-none transition-transform hover:scale-105 duration-500 ${className}`}>
@@ -49,7 +58,7 @@ export default function FloatingFruits() {
         {/* Acai berries cluster - top left, slight rotation, animate duration 4s */}
         <FruitPlaceholder
           name="Acai Cluster"
-          basePath="/fruits/acai-cluster"
+          basePaths={["/fruits/acai-cluster", "/fruits/acai"]}
           className="animate-float-left-4 origin-center rotate-[-12deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -79,7 +88,7 @@ export default function FloatingFruits() {
         {/* Fig/purple fruit cut - middle left, animate duration 6s */}
         <FruitPlaceholder
           name="Fig Cut"
-          basePath="/fruits/fig"
+          basePaths={["/fruits/fig-cut", "/fruits/fig"]}
           className="animate-float-left-6 origin-center rotate-[8deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-28 h-28 drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
@@ -105,7 +114,7 @@ export default function FloatingFruits() {
         {/* Strawberries - bottom left, animate duration 5s */}
         <FruitPlaceholder
           name="Strawberry"
-          basePath="/fruits/strawberry"
+          basePaths={["/fruits/strawberry-cluster", "/fruits/strawberry"]}
           className="animate-float-left-5 origin-center rotate-[-5deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -142,7 +151,7 @@ export default function FloatingFruits() {
         {/* Purple acai cross-section - top right, animate duration 3s */}
         <FruitPlaceholder
           name="Acai Cross Section"
-          basePath="/fruits/acai-cross"
+          basePaths={["/fruits/acai-cross", "/fruits/acai"]}
           className="animate-float-right-3 origin-center rotate-[15deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -169,7 +178,7 @@ export default function FloatingFruits() {
         {/* Another acai cluster - middle right, animate duration 5s */}
         <FruitPlaceholder
           name="Acai Cluster 2"
-          basePath="/fruits/acai-cluster-2"
+          basePaths={["/fruits/acai-cluster-2", "/fruits/acai"]}
           className="animate-float-right-5 origin-center rotate-[-6deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-26 h-26 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -199,7 +208,7 @@ export default function FloatingFruits() {
         {/* Ice pop/fruit - bottom right, animate duration 4s */}
         <FruitPlaceholder
           name="Ice Pop"
-          basePath="/fruits/icepop"
+          basePaths={["/fruits/icepop", "/fruits/ice-pop", "/fruits/pop"]}
           className="animate-float-right-4 origin-center rotate-[10deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 120" className="w-24 h-28 drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
