@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, ArrowUpRight } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
+import WalkingProduct from "../ui/WalkingProduct";
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -191,6 +192,11 @@ export default function Footer() {
           </button>
         </div>
 
+      </div>
+      
+      {/* Walking Product container at the bottom of footer */}
+      <div className="relative w-full overflow-hidden h-28 pointer-events-none mt-4">
+        <WalkingProduct />
       </div>
     </footer>
   );

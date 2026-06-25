@@ -6,6 +6,7 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/context/CartContext";
+import FloatingFruits from "@/components/ui/FloatingFruits";
 
 const fredoka = Fredoka({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
           <SmoothScrollProvider>
             <CustomCursor />
             <Navbar />
+            <FloatingFruits />
             <main className="min-h-screen overflow-visible">
               {children}
             </main>

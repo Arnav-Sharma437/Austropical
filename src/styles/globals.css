@@ -174,3 +174,68 @@ h1, h2, h3, h4, h5, h6 {
 .animate-bounce-badge {
   animation: bounce-slow 4.5s ease-in-out infinite;
 }
+
+/* Floating Fruits & Walking Product Animations */
+@keyframes float-left {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes float-right {
+  0%, 100% { transform: translateY(0px) rotate(5deg); }
+  50% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+@keyframes walk-across {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-200px); }
+}
+
+@keyframes step-left-leg {
+  0%, 100% { transform: rotate(-20deg) translateY(0); }
+  50% { transform: rotate(20deg) translateY(-8px); }
+}
+
+@keyframes step-right-leg {
+  0%, 100% { transform: rotate(20deg) translateY(-8px); }
+  50% { transform: rotate(-20deg) translateY(0); }
+}
+
+.animate-float-left-3 {
+  animation: float-left 3s ease-in-out infinite;
+}
+.animate-float-left-4 {
+  animation: float-left 4s ease-in-out infinite;
+}
+.animate-float-left-5 {
+  animation: float-left 5s ease-in-out infinite;
+}
+.animate-float-left-6 {
+  animation: float-left 6s ease-in-out infinite;
+}
+
+.animate-float-right-3 {
+  animation: float-right 3s ease-in-out infinite;
+}
+.animate-float-right-4 {
+  animation: float-right 4s ease-in-out infinite;
+}
+.animate-float-right-5 {
+  animation: float-right 5s ease-in-out infinite;
+}
+.animate-float-right-6 {
+  animation: float-right 6s ease-in-out infinite;
+}
+
+.animate-walk-across {
+  animation: walk-across 15s linear infinite;
+}
+
+.animate-step-left {
+  animation: step-left-leg 0.5s ease-in-out infinite;
+}
+
+.animate-step-right {
+  animation: step-right-leg 0.5s ease-in-out infinite;
+}
+
