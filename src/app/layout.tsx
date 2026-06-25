@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Syne, Inter } from "next/font/google";
+import { Fredoka, Nunito } from "next/font/google";
 import "../styles/globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const syne = Syne({
+const fredoka = Fredoka({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["700"],
   variable: "--font-display",
   display: "swap",
 });
 
-const inter = Inter({
+const nunito = Nunito({
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${fredoka.variable} ${nunito.variable} scroll-smooth`}>
       <body className="antialiased">
         <SmoothScrollProvider>
           <CustomCursor />

@@ -4,6 +4,7 @@ import React from "react";
 import Hero from "@/components/sections/Hero";
 import MarqueeText from "@/components/ui/MarqueeText";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
+import BannerMarquee from "@/components/sections/BannerMarquee";
 import WhyAustropical from "@/components/sections/WhyAustropical";
 import OurStoryTeaser from "@/components/sections/OurStoryTeaser";
 import SustainabilitySection from "@/components/sections/Sustainability";
@@ -40,6 +41,9 @@ export default function Home() {
 
       {/* 3. Featured Products */}
       <FeaturedProducts />
+
+      {/* Banner Marquee Section */}
+      <BannerMarquee />
 
       {/* 4. Why Austropical */}
       <WhyAustropical />

@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUpVariants } from "@/lib/animations";
+import TropicalBackground from "../ui/TropicalBackground";
 
 const BENEFITS = [
   {
@@ -30,10 +31,10 @@ const BENEFITS = [
     glowColor: "#FFD700", // brand-yellow
   },
 ];
-
 export default function WhyAustropical() {
   return (
-    <section className="relative overflow-hidden bg-[#15002a] py-24 md:py-32">
+    <TropicalBackground color="purple">
+      <section className="relative overflow-hidden py-24 md:py-32">
       {/* Background radial ambient lights */}
       <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-brand-purple/10 blur-[120px] pointer-events-none" />
       <div className="absolute right-[-10%] bottom-[-10%] h-[500px] w-[500px] rounded-full bg-brand-pink/5 blur-[120px] pointer-events-none" />
@@ -92,5 +93,6 @@ export default function WhyAustropical() {
 
       </div>
     </section>
+    </TropicalBackground>
   );
 }

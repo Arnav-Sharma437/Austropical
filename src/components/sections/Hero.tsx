@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
+import TropicalBackground from "../ui/TropicalBackground";
+import SpinningBadges from "../ui/SpinningBadge";
 
 const textContainerVariants = {
   hidden: {},
@@ -44,7 +46,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden bg-gradient-to-br from-brand-orange via-brand-pink to-brand-purple px-6 pt-24 md:px-12 lg:px-24">
+    <TropicalBackground color="orange">
+      <section className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 pt-24 md:px-12 lg:px-24">
       
       {/* Wave Overlay Background Graphic */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -83,7 +86,7 @@ export default function Hero() {
             animate="visible"
             className="flex flex-col"
           >
-            <motion.h1 className="font-display text-[9vw] font-black leading-[0.85] tracking-tighter text-white sm:text-[8vw] lg:text-[6.5vw] flex flex-col">
+            <motion.h1 className="hero-heading flex flex-col">
               <motion.span variants={wordVariants} className="block">AUSTRALIA'S</motion.span>
               <motion.span variants={wordVariants} className="block text-brand-yellow drop-shadow-md">BRIGHTER</motion.span>
               <motion.span variants={wordVariants} className="block">SNACK CHOICE</motion.span>
@@ -128,32 +131,8 @@ export default function Hero() {
         <div className="relative flex items-center justify-center lg:col-span-5">
           <div className="relative h-[320px] w-[320px] sm:h-[400px] sm:w-[400px] md:h-[450px] md:w-[450px]">
             
-            {/* Spinning Badge 1: 100% VEGAN */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute left-[-5%] top-[10%] z-20 flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 text-center font-display text-[9px] font-black uppercase tracking-widest text-white shadow-lg backdrop-blur-md"
-            >
-              100%<br />VEGAN
-            </motion.div>
-
-            {/* Spinning Badge 2: GLUTEN FREE */}
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-              className="absolute right-[-2%] top-[30%] z-20 flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-brand-yellow/10 text-center font-display text-[10px] font-black uppercase tracking-widest text-brand-yellow shadow-lg backdrop-blur-md"
-            >
-              GLUTEN<br />FREE
-            </motion.div>
-
-            {/* Spinning Badge 3: CERTIFIED ORGANIC */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-              className="absolute bottom-[10%] left-[8%] z-20 flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-brand-pink/10 text-center font-display text-[9px] font-black uppercase tracking-widest text-brand-pink shadow-lg backdrop-blur-md"
-            >
-              CERTIFIED<br />ORGANIC
-            </motion.div>
+            {/* 6 Custom CSS Keyframe Spinning Badges */}
+            <SpinningBadges />
 
             {/* Floating Product Image Container */}
             <motion.div
@@ -198,5 +177,6 @@ export default function Hero() {
       </div>
 
     </section>
+    </TropicalBackground>
   );
 }

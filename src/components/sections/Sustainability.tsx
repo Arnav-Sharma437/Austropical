@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { staggerContainer, fadeUpVariants } from "@/lib/animations";
 import MagneticButton from "../ui/MagneticButton";
+import TropicalBackground from "../ui/TropicalBackground";
 
 const PILLARS = [
   {
@@ -37,10 +38,11 @@ export default function SustainabilitySection() {
   const glowScale = useTransform(scrollYProgress, [0, 1], [0.8, 1.2]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-[#013220] to-teal-950 py-24 md:py-32 text-white"
-    >
+    <TropicalBackground color="green">
+      <section
+        ref={sectionRef}
+        className="relative overflow-hidden py-24 md:py-32 text-white"
+      >
       {/* Parallax background light glow */}
       <motion.div
         style={{
@@ -112,6 +114,7 @@ export default function SustainabilitySection() {
         </motion.div>
 
       </div>
-    </section>
+      </section>
+    </TropicalBackground>
   );
 }

@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import MagneticButton from "../ui/MagneticButton";
+import TropicalBackground from "../ui/TropicalBackground";
 
 export default function CTABanner() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,20 +14,15 @@ export default function CTABanner() {
     offset: ["start end", "end start"],
   });
 
-  // Calculate background scale and diagonal parallax movement
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  // Calculate diagonal parallax movement
   const textX = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <section
-      ref={containerRef}
-      className="relative overflow-hidden bg-brand-orange py-32 text-center text-white"
-    >
-      {/* Background Bold Gradient with Parallax Scale */}
-      <motion.div
-        style={{ scale }}
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-orange via-brand-pink to-brand-pink"
-      />
+    <TropicalBackground color="pink">
+      <section
+        ref={containerRef}
+        className="relative overflow-hidden py-32 text-center text-white"
+      >
 
       {/* Decorative Parallax Text in background */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-5 pointer-events-none select-none">
@@ -60,6 +56,7 @@ export default function CTABanner() {
           </Link>
         </div>
       </div>
-    </section>
+      </section>
+    </TropicalBackground>
   );
 }

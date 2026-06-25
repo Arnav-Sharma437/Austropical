@@ -117,3 +117,60 @@ h1, h2, h3, h4, h5, h6 {
 .marquee-container:hover .animate-marquee-right {
   animation-play-state: paused;
 }
+
+/* Chunky bold headings look */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 900;
+}
+
+/* Custom Hero Headings styling */
+.hero-heading {
+  font-size: clamp(3rem, 8vw, 7rem) !important;
+  font-weight: 900 !important;
+  color: #FFFFFF !important;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+/* Badge CSS Keyframe Animations */
+@keyframes spin-linear {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes wobble-slow {
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  25% { transform: rotate(-5deg) translateY(-2px); }
+  75% { transform: rotate(5deg) translateY(2px); }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-spin-badge-10 {
+  animation: spin-linear 10s linear infinite;
+}
+
+.animate-spin-badge-12 {
+  animation: spin-linear 12s linear infinite;
+}
+
+.animate-spin-badge-8 {
+  animation: spin-linear 8s linear infinite;
+}
+
+.animate-spin-badge-15 {
+  animation: spin-linear 15s linear infinite;
+}
+
+.animate-wobble-badge {
+  animation: wobble-slow 5s ease-in-out infinite;
+}
+
+.animate-bounce-badge {
+  animation: bounce-slow 4.5s ease-in-out infinite;
+}
