@@ -1,0 +1,75 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import MagneticButton from "../ui/MagneticButton";
+
+const solidColorBlurDataURL = 
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+
+export default function OurStoryTeaser() {
+  return (
+    <section className="relative overflow-hidden bg-brand-dark py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          
+          {/* Left Text: Slides from Left */}
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-start"
+          >
+            <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-orange">
+              MADE IN AUSTRALIA
+            </span>
+            <h2 className="mt-2 font-display text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+              CRAFTED FOR THE<br />SUN-CHASERS
+            </h2>
+            
+            <p className="mt-6 font-body text-sm md:text-base text-white/60 leading-relaxed">
+              Austropical was born under the hot Australian sun. We wanted a snack that was as bright, refreshing, and clean as our beaches, without sacrificing the premium, creamy texture of traditional ice creams.
+            </p>
+            <p className="mt-4 font-body text-sm md:text-base text-white/60 leading-relaxed">
+              We sourced the finest wild acai berries from the Amazon rainforest and combined them with local Australian mangoes, passionfruit, and strawberries to create the ultimate dairy-free tropical treat.
+            </p>
+
+            <Link href="/about" className="mt-8">
+              <MagneticButton
+                className="rounded-full bg-white px-8 py-4 font-display text-xs font-black uppercase tracking-wider text-brand-dark hover:bg-brand-orange hover:text-white hover:shadow-brand-orange/20"
+                data-hover="true"
+              >
+                READ OUR STORY
+              </MagneticButton>
+            </Link>
+          </motion.div>
+
+          {/* Right Image: Slides from Right */}
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative flex h-[350px] w-full items-center justify-center sm:h-[450px]"
+          >
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-orange/20 to-brand-pink/20 blur-2xl" />
+            <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+              <Image
+                src="https://placehold.co/800x600/4B0082/FFFFFF?text=Austropical+Spoon"
+                alt="Austropical Acai Scoop"
+                fill
+                placeholder="blur"
+                blurDataURL={solidColorBlurDataURL}
+                className="object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
