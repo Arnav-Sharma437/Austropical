@@ -4,17 +4,24 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    const bannersDir = path.join(process.cwd(), "public", "banners");
-    
-    if (!fs.existsSync(bannersDir)) {
+    const { searchParams } = new URL(request.url);
+    const page = searchParams.get("page");
+
+    if (!page) {
       return NextResponse.json({ files: [] });
     }
 
-    const files = fs.readdirSync(bannersDir);
+    const pageDir = path.join(process.cwd(), "public", page);
     
-    // Filter out .gitkeep and return only image files
+    if (!fs.existsSync(pageDir)) {
+      return NextResponse.json({ files: [] });
+    }
+
+    const files = fs.readdirSync(pageDir);
+    
+    // Filter out hidden files and return only image files
     const imageFiles = files.filter(file => {
       const ext = path.extname(file).toLowerCase();
       return [".png", ".webp", ".jpg", ".jpeg", ".svg"].includes(ext);
@@ -22,7 +29,7 @@ export async function GET() {
 
     return NextResponse.json({ files: imageFiles });
   } catch (error) {
-    console.error("Error reading banners directory:", error);
+    console.error("Error reading page assets directory:", error);
     return NextResponse.json({ files: [] });
   }
 }

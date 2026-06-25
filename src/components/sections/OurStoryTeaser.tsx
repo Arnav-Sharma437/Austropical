@@ -1,15 +1,38 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import MagneticButton from "../ui/MagneticButton";
 
-const solidColorBlurDataURL = 
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
-
 export default function OurStoryTeaser() {
+  const [teaserImage, setTeaserImage] = useState<string>("https://placehold.co/800x600/4B0082/FFFFFF?text=Austropical+Spoon");
+
+  useEffect(() => {
+    async function loadTeaserImage() {
+      try {
+        const res = await fetch("/api/page-assets?page=about");
+        const data = await res.json();
+        if (data.files && data.files.length > 0) {
+          // Look for any file containing 'spoon', 'story', or 'teaser'
+          const match = data.files.find((file: string) => 
+            file.toLowerCase().includes("spoon") || 
+            file.toLowerCase().includes("story") || 
+            file.toLowerCase().includes("teaser")
+          ) || data.files[0];
+          
+          if (match) {
+            setTeaserImage(`/about/${match}`);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load teaser image:", err);
+      }
+    }
+    loadTeaserImage();
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-[#FCF9F2] py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
@@ -58,12 +81,11 @@ export default function OurStoryTeaser() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-brand-orange/20 to-brand-pink/20 blur-2xl" />
             <div className="relative h-full w-full overflow-hidden rounded-3xl border border-brand-dark/10 bg-brand-dark/[0.02]">
               <Image
-                src="https://placehold.co/800x600/4B0082/FFFFFF?text=Austropical+Spoon"
+                src={teaserImage}
                 alt="Austropical Acai Scoop"
                 fill
-                placeholder="blur"
-                blurDataURL={solidColorBlurDataURL}
                 className="object-cover transition-transform duration-700 hover:scale-105"
+                unoptimized
               />
             </div>
           </motion.div>

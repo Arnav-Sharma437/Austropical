@@ -71,6 +71,30 @@ function Counter({ value, duration = 1.2, suffix = "", prefix = "" }: CounterPro
 }
 
 export default function SustainabilityPage() {
+  const [heroImage, setHeroImage] = useState<string>("https://placehold.co/1920x1080/00A86B/FFFFFF?text=Austropical+Rainforest");
+
+  useEffect(() => {
+    async function loadHeroImage() {
+      try {
+        const res = await fetch("/api/page-assets?page=sustainability");
+        const data = await res.json();
+        if (data.files && data.files.length > 0) {
+          // Look for any file containing 'hero' or 'banner'
+          const heroFile = data.files.find((file: string) => 
+            file.toLowerCase().includes("hero") || file.toLowerCase().includes("banner")
+          ) || data.files[0];
+          
+          if (heroFile) {
+            setHeroImage(`/sustainability/${heroFile}`);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load sustainability hero image:", err);
+      }
+    }
+    loadHeroImage();
+  }, []);
+
   return (
     <div className="bg-[#FCF9F2] min-h-screen text-brand-dark overflow-visible">
       
@@ -78,11 +102,12 @@ export default function SustainabilityPage() {
       <section className="relative flex h-[60vh] min-h-[450px] w-full items-center justify-center overflow-hidden bg-[#022115] px-6 text-center">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <Image
-          src="https://placehold.co/1920x1080/00A86B/FFFFFF?text=Austropical+Rainforest"
+          src={heroImage}
           alt="Rainforest canopy"
           fill
           priority
           className="object-cover opacity-60"
+          unoptimized
         />
         <div className="relative z-20 mx-auto max-w-4xl px-4">
           <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-green drop-shadow-md">

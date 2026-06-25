@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeUpVariants, staggerContainer } from "@/lib/animations";
 import MagneticButton from "@/components/ui/MagneticButton";
-
-const solidColorBlurDataURL = 
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
 
 const TEAM = [
   { name: "Jack Harrison", role: "Co-Founder & CEO", emoji: "🏄‍♂️", color: "#FF6B00" },
@@ -46,6 +43,41 @@ const MILESTONES = [
 export default function AboutPage() {
   const timelineRef = useRef<HTMLDivElement>(null);
   
+  const [heroImage, setHeroImage] = useState<string>("https://placehold.co/1920x1080/4B0082/FFFFFF?text=Austropical+Bondi");
+  const [philosophyImage, setPhilosophyImage] = useState<string>("https://placehold.co/800x600/FF1493/FFFFFF?text=Austropical+Pulp");
+
+  useEffect(() => {
+    async function loadImages() {
+      try {
+        const res = await fetch("/api/page-assets?page=about");
+        const data = await res.json();
+        if (data.files && data.files.length > 0) {
+          // Look for any file containing 'hero' or 'banner'
+          const heroFile = data.files.find((file: string) => 
+            file.toLowerCase().includes("hero") || file.toLowerCase().includes("banner")
+          );
+          if (heroFile) {
+            setHeroImage(`/about/${heroFile}`);
+          } else {
+            setHeroImage(`/about/${data.files[0]}`);
+          }
+
+          // Look for any file containing 'philosophy' or 'pulp' or 'about'
+          const philFile = data.files.find((file: string) => 
+            file.toLowerCase().includes("philosophy") || file.toLowerCase().includes("pulp")
+          ) || data.files.find((file: string) => file !== heroFile) || data.files[0];
+          
+          if (philFile) {
+            setPhilosophyImage(`/about/${philFile}`);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load about images:", err);
+      }
+    }
+    loadImages();
+  }, []);
+
   // Calculate scroll progress for drawing the vertical line
   const { scrollYProgress } = useScroll({
     target: timelineRef,
@@ -61,11 +93,12 @@ export default function AboutPage() {
       <section className="relative flex h-[60vh] min-h-[450px] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-brand-orange via-brand-pink to-brand-purple px-6 text-center">
         <div className="absolute inset-0 bg-black/30 z-10" />
         <Image
-          src="https://placehold.co/1920x1080/4B0082/FFFFFF?text=Austropical+Bondi"
+          src={heroImage}
           alt="Bondi Beach Sunrise"
           fill
           priority
           className="object-cover"
+          unoptimized
         />
         <div className="relative z-20 mx-auto max-w-4xl px-4">
           <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-yellow drop-shadow-md">
@@ -116,12 +149,11 @@ export default function AboutPage() {
               className="relative h-[300px] sm:h-[400px] w-full rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-dark/[0.02]"
             >
               <Image
-                src="https://placehold.co/800x600/FF1493/FFFFFF?text=Austropical+Pulp"
+                src={philosophyImage}
                 alt="Organic Acai Berries"
                 fill
-                placeholder="blur"
-                blurDataURL={solidColorBlurDataURL}
                 className="object-cover"
+                unoptimized
               />
             </motion.div>
 
