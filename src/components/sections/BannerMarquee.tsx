@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface BannerItem {
@@ -62,11 +62,62 @@ const BANNERS: BannerItem[] = [
 ];
 
 export default function BannerMarquee() {
+  const [banners, setBanners] = useState<BannerItem[]>(BANNERS);
+
+  useEffect(() => {
+    async function loadBanners() {
+      try {
+        const res = await fetch("/api/banners");
+        const data = await res.json();
+        if (data.files && data.files.length > 0) {
+          const updatedBanners = BANNERS.map(banner => {
+            // Find a file that matches banner-${banner.id}
+            const matchingFile = data.files.find((file: string) => 
+              file.toLowerCase().startsWith(`banner-${banner.id}.`) || 
+              file.toLowerCase().includes(`banner-${banner.id}`)
+            );
+            if (matchingFile) {
+              return {
+                ...banner,
+                src: `/banners/${matchingFile}`
+              };
+            }
+            return banner;
+          });
+          setBanners(updatedBanners);
+        }
+      } catch (err) {
+        console.error("Failed to load banners list from API, using defaults:", err);
+      }
+    }
+    loadBanners();
+  }, []);
+
+  // Handles dynamic extension fallback if an image fails to load
+  const handleImageError = (id: number, currentSrc: string) => {
+    const extensions = [".png", ".webp", ".jpg", ".jpeg", ".svg"];
+    const extIndex = currentSrc.lastIndexOf(".");
+    if (extIndex === -1) return;
+    
+    const currentExt = currentSrc.slice(extIndex);
+    const currentIndex = extensions.indexOf(currentExt);
+    
+    if (currentIndex !== -1 && currentIndex < extensions.length - 1) {
+      const nextExt = extensions[currentIndex + 1];
+      const basePath = currentSrc.slice(0, extIndex);
+      const nextSrc = `${basePath}${nextExt}`;
+      
+      setBanners(prev => 
+        prev.map(b => (b.id === id ? { ...b, src: nextSrc } : b))
+      );
+    }
+  };
+
   // Duplicate array for seamless infinite looping
-  const repeatedBanners = [...BANNERS, ...BANNERS];
+  const repeatedBanners = [...banners, ...banners];
 
   return (
-    <section className="relative overflow-hidden bg-[#0D0D0D] py-16">
+    <section className="relative overflow-hidden bg-[#FCF9F2] py-16">
       
       {/* Scrollable Marquee Container */}
       <div 
@@ -91,8 +142,8 @@ export default function BannerMarquee() {
                 fill
                 sizes="600px"
                 className="object-cover transition-opacity duration-300 pointer-events-none"
-                // Load unoptimized since files are added locally by users
                 unoptimized
+                onError={() => handleImageError(banner.id, banner.src)}
               />
 
               {/* Gradient overlay for text contrast */}
@@ -117,3 +168,4 @@ export default function BannerMarquee() {
     </section>
   );
 }
+

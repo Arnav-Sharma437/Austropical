@@ -72,7 +72,7 @@ function Counter({ value, duration = 1.2, suffix = "", prefix = "" }: CounterPro
 
 export default function SustainabilityPage() {
   return (
-    <div className="bg-brand-dark min-h-screen text-white overflow-visible">
+    <div className="bg-[#FCF9F2] min-h-screen text-brand-dark overflow-visible">
       
       {/* 1. Page Hero */}
       <section className="relative flex h-[60vh] min-h-[450px] w-full items-center justify-center overflow-hidden bg-[#022115] px-6 text-center">
@@ -98,13 +98,13 @@ export default function SustainabilityPage() {
       </section>
 
       {/* 2. Three Pillars */}
-      <section className="py-24 px-6 md:px-12 bg-white/[0.01]">
+      <section className="py-24 px-6 md:px-12 bg-[#FCF9F2]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <span className="font-display text-xs font-black uppercase tracking-widest text-brand-orange">
               OUR THREE PILLARS
             </span>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
               HOW WE MAKE A DIFFERENCE
             </h2>
           </div>
@@ -121,15 +121,15 @@ export default function SustainabilityPage() {
                 key={idx}
                 variants={fadeUpVariants}
                 whileHover={{ y: -8 }}
-                className="flex flex-col items-start p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md"
+                className="flex flex-col items-start p-8 rounded-2xl border border-brand-dark/10 bg-[#FAF6EE] shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-green/10 border border-brand-green/20 text-3xl mb-6 select-none">
                   {pillar.icon}
                 </div>
-                <h3 className="font-display text-xl font-black uppercase text-white tracking-tight">
+                <h3 className="font-display text-xl font-black uppercase text-brand-dark tracking-tight">
                   {pillar.title}
                 </h3>
-                <p className="mt-4 font-body text-sm leading-relaxed text-white/60">
+                <p className="mt-4 font-body text-sm leading-relaxed text-brand-dark/70">
                   {pillar.text}
                 </p>
               </motion.div>
@@ -139,14 +139,14 @@ export default function SustainabilityPage() {
       </section>
 
       {/* 3. Stats Counter Section (scroll-triggered increment) */}
-      <section className="py-24 px-6 md:px-12 bg-[#021f14] border-y border-white/5">
+      <section className="py-24 px-6 md:px-12 bg-[#FAF6EE] border-y border-brand-dark/5">
         <div className="mx-auto max-w-7xl">
           
           <div className="text-center mb-16">
             <span className="font-display text-xs font-black uppercase tracking-widest text-brand-yellow">
               THE IMPACT NUMBERS
             </span>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
               OUR PLANET NUMBERS
             </h2>
           </div>
@@ -158,10 +158,10 @@ export default function SustainabilityPage() {
               <span className="font-display text-5xl md:text-6xl font-black text-brand-green">
                 <Counter value={100} suffix="%" />
               </span>
-              <span className="mt-3 font-display text-xs font-black uppercase tracking-wider text-white/70">
+              <span className="mt-3 font-display text-xs font-black uppercase tracking-wider text-brand-dark/80">
                 ECO BIODEGRADABLE TUBS
               </span>
-              <p className="mt-2 font-body text-xs text-white/40 max-w-xs">
+              <p className="mt-2 font-body text-xs text-brand-dark/60 max-w-xs">
                 Every bucket, pop sleeve, and shipping cup is built from 100% plant fiber.
               </p>
             </div>
@@ -171,10 +171,10 @@ export default function SustainabilityPage() {
               <span className="font-display text-5xl md:text-6xl font-black text-brand-yellow">
                 <Counter value={55} suffix="k+" />
               </span>
-              <span className="mt-3 font-display text-xs font-black uppercase tracking-wider text-white/70">
+              <span className="mt-3 font-display text-xs font-black uppercase tracking-wider text-brand-dark/80">
                 TREES PLANTED LOCALLY
               </span>
-              <p className="mt-2 font-body text-xs text-white/40 max-w-xs">
+              <p className="mt-2 font-body text-xs text-brand-dark/60 max-w-xs">
                 Planted in partner reforestation corridors across QLD and NSW.
               </p>
             </div>
@@ -184,10 +184,10 @@ export default function SustainabilityPage() {
               <span className="font-display text-5xl md:text-6xl font-black text-brand-pink">
                 <Counter value={120} suffix="+" />
               </span>
-              <span className="mt-3 font-display text-xs font-black uppercase tracking-wider text-white/70">
+              <span className="mt-3 font-display text-xs font-black uppercase tracking-wider text-brand-dark/80">
                 COOP FARMING PARTNERS
               </span>
-              <p className="mt-2 font-body text-xs text-white/40 max-w-xs">
+              <p className="mt-2 font-body text-xs text-brand-dark/60 max-w-xs">
                 Empowered farmers harvests wild acai across 15 pristine rainforest zones.
               </p>
             </div>
@@ -198,13 +198,13 @@ export default function SustainabilityPage() {
       </section>
 
       {/* 4. Certifications */}
-      <section className="py-24 px-6 md:px-12 bg-brand-dark">
+      <section className="py-24 px-6 md:px-12 bg-[#FCF9F2]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <span className="font-display text-xs font-black uppercase tracking-widest text-brand-green">
               RECOGNISED GLOBAL STANDARDS
             </span>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
               OUR TRUST CERTIFICATIONS
             </h2>
           </div>
@@ -214,10 +214,10 @@ export default function SustainabilityPage() {
               <motion.div
                 key={idx}
                 whileHover={{ y: -5 }}
-                className="flex flex-col items-center text-center p-6 rounded-2xl border border-white/5 bg-white/[0.02]"
+                className="flex flex-col items-center text-center p-6 rounded-2xl border border-brand-dark/10 bg-[#FAF6EE] shadow-md"
               >
                 <span className="text-4xl mb-4">{cert.logo}</span>
-                <h3 className="font-display text-xs font-black uppercase tracking-wider text-white/80">
+                <h3 className="font-display text-xs font-black uppercase tracking-wider text-brand-dark/80">
                   {cert.name}
                 </h3>
               </motion.div>

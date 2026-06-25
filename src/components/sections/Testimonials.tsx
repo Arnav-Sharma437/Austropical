@@ -48,7 +48,7 @@ export default function Testimonials() {
   const scrollingReviews = [...REVIEWS, ...REVIEWS, ...REVIEWS];
 
   return (
-    <section className="relative overflow-hidden bg-brand-dark py-24 md:py-32">
+    <section className="relative overflow-hidden bg-[#FCF9F2] py-24 md:py-32">
       {/* Dynamic CSS for testimonial scrolling marquee */}
       <style jsx global>{`
         @keyframes testimonial-marquee {
@@ -72,7 +72,7 @@ export default function Testimonials() {
           <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-yellow">
             SPOON-TESTED BY AUSSIES
           </span>
-          <h2 className="mt-2 font-display text-4xl font-black uppercase tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h2 className="mt-2 font-display text-4xl font-black uppercase tracking-tight text-brand-dark sm:text-5xl md:text-6xl">
             LOVED BY SUN-CHASERS
           </h2>
         </div>
@@ -85,7 +85,7 @@ export default function Testimonials() {
           {scrollingReviews.map((item, idx) => (
             <div
               key={idx}
-              className="flex w-[290px] flex-col justify-between rounded-2xl border border-white/5 bg-white/[0.03] p-8 shadow-xl backdrop-blur-sm sm:w-[350px]"
+              className="flex w-[290px] flex-col justify-between rounded-2xl border border-brand-dark/10 bg-brand-dark/[0.02] p-8 shadow-xl backdrop-blur-sm sm:w-[350px]"
             >
               <div>
                 {/* Star Rating */}
@@ -95,17 +95,17 @@ export default function Testimonials() {
                   ))}
                 </div>
                 {/* Quote */}
-                <p className="mt-6 font-body text-sm leading-relaxed text-white/80 italic">
+                <p className="mt-6 font-body text-sm leading-relaxed text-brand-dark/80 italic">
                   "{item.quote}"
                 </p>
               </div>
 
               {/* Author */}
-              <div className="mt-8 border-t border-white/5 pt-4">
-                <h4 className="font-display text-sm font-extrabold uppercase text-white tracking-wide">
+              <div className="mt-8 border-t border-brand-dark/10 pt-4">
+                <h4 className="font-display text-sm font-extrabold uppercase text-brand-dark tracking-wide">
                   {item.name}
                 </h4>
-                <p className="text-xs text-white/40 font-body mt-0.5">
+                <p className="text-xs text-brand-dark/50 font-body mt-0.5">
                   Verified Buyer, {item.location}
                 </p>
               </div>

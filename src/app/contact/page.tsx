@@ -44,7 +44,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-brand-dark min-h-screen text-white pt-32 pb-24 px-6 md:px-12">
+    <div className="bg-[#FCF9F2] min-h-screen text-brand-dark pt-32 pb-24 px-6 md:px-12">
       <div className="mx-auto max-w-7xl">
         
         {/* Page Hero */}
@@ -52,10 +52,10 @@ export default function ContactPage() {
           <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-pink">
             GET IN TOUCH
           </span>
-          <h1 className="mt-2 font-display text-5xl font-black uppercase tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h1 className="mt-2 font-display text-5xl font-black uppercase tracking-tight text-brand-dark sm:text-6xl md:text-7xl">
             SAY HELLO
           </h1>
-          <p className="mx-auto mt-4 max-w-md font-body text-sm md:text-base text-white/50">
+          <p className="mx-auto mt-4 max-w-md font-body text-sm md:text-base text-brand-dark/60">
             Have questions about wholesale, ingredients, or just want to tell us your favourite flavour? We'd love to hear from you.
           </p>
         </div>
@@ -65,45 +65,45 @@ export default function ContactPage() {
           {/* Left: Contact Info (5 Cols) */}
           <div className="flex flex-col gap-10 lg:col-span-5">
             <div>
-              <h2 className="font-display text-2xl font-black uppercase text-white tracking-tight">
+              <h2 className="font-display text-2xl font-black uppercase text-brand-dark tracking-tight">
                 CONTACT DETAILS
               </h2>
-              <p className="mt-2 text-sm text-white/50 font-body">
+              <p className="mt-2 text-sm text-brand-dark/60 font-body">
                 Drop us a message, email, or give us a buzz.
               </p>
             </div>
 
-            <div className="flex flex-col gap-6 font-body text-sm text-white/85">
+            <div className="flex flex-col gap-6 font-body text-sm text-brand-dark/80">
               
               {/* Email */}
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.03] border border-white/5 text-brand-orange">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FAF6EE] border border-brand-dark/10 text-brand-orange">
                   <Mail size={18} />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40 uppercase font-bold tracking-wider">EMAIL US</p>
+                  <p className="text-xs text-brand-dark/50 uppercase font-bold tracking-wider">EMAIL US</p>
                   <p className="hover:text-brand-orange transition-colors mt-0.5">hello@austropical.com.au</p>
                 </div>
               </div>
 
               {/* Phone */}
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.03] border border-white/5 text-brand-pink">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FAF6EE] border border-brand-dark/10 text-brand-pink">
                   <Phone size={18} />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40 uppercase font-bold tracking-wider">CALL US</p>
+                  <p className="text-xs text-brand-dark/50 uppercase font-bold tracking-wider">CALL US</p>
                   <p className="hover:text-brand-pink transition-colors mt-0.5">+61 (02) 9876 5432</p>
                 </div>
               </div>
 
               {/* Location */}
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.03] border border-white/5 text-brand-yellow">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FAF6EE] border border-brand-dark/10 text-brand-yellow">
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <p className="text-xs text-white/40 uppercase font-bold tracking-wider">VISIT HEADQUARTERS</p>
+                  <p className="text-xs text-brand-dark/50 uppercase font-bold tracking-wider">VISIT HEADQUARTERS</p>
                   <p className="hover:text-brand-yellow transition-colors mt-0.5">14 Bondi Road, Bondi Beach, NSW 2026</p>
                 </div>
               </div>
@@ -111,15 +111,15 @@ export default function ContactPage() {
             </div>
 
             {/* Social Links */}
-            <div className="border-t border-white/5 pt-8">
-              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-white/40 mb-4">
+            <div className="border-t border-brand-dark/10 pt-8">
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-brand-dark/50 mb-4">
                 FOLLOW OUR SUN-CHASING JOURNEY
               </h3>
               <div className="flex gap-4">
-                <MagneticButton className="h-12 w-12 rounded-full border border-white/10 text-white hover:border-brand-orange hover:bg-brand-orange">
+                <MagneticButton className="h-12 w-12 rounded-full border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:bg-brand-orange hover:text-white">
                   <InstagramIcon size={18} />
                 </MagneticButton>
-                <MagneticButton className="h-12 w-12 rounded-full border border-white/10 text-white hover:border-brand-pink hover:bg-brand-pink">
+                <MagneticButton className="h-12 w-12 rounded-full border border-brand-dark/15 text-brand-dark hover:border-brand-pink hover:bg-brand-pink hover:text-white">
                   <FacebookIcon size={18} />
                 </MagneticButton>
               </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right: Contact Form (7 Cols) */}
-          <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 md:p-10 backdrop-blur-md lg:col-span-7 relative overflow-hidden">
+          <div className="rounded-3xl border border-brand-dark/10 bg-[#FAF6EE] p-8 md:p-10 shadow-lg lg:col-span-7 relative overflow-hidden">
             
             <AnimatePresence mode="wait">
               {status === "success" ? (
@@ -141,10 +141,10 @@ export default function ContactPage() {
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-green/20 border border-brand-green text-brand-green mb-6 animate-pulse">
                     <Check size={28} strokeWidth={3} />
                   </div>
-                  <h3 className="font-display text-2xl font-black uppercase text-white">
+                  <h3 className="font-display text-2xl font-black uppercase text-brand-dark">
                     MESSAGE SENT!
                   </h3>
-                  <p className="mt-2 text-sm text-white/60 font-body max-w-sm">
+                  <p className="mt-2 text-sm text-brand-dark/60 font-body max-w-sm">
                     Thank you for reaching out. A member of our sun-chasing team will respond to you within 24 hours.
                   </p>
                   <button
@@ -173,11 +173,11 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       placeholder=" "
                       disabled={status === "loading"}
-                      className="peer block w-full px-0 py-3 bg-transparent border-b border-white/10 text-white focus:outline-none focus:border-brand-orange placeholder-transparent transition-colors font-body text-sm"
+                      className="peer block w-full px-0 py-3 bg-transparent border-b border-brand-dark/20 text-brand-dark focus:outline-none focus:border-brand-orange placeholder-transparent transition-colors font-body text-sm"
                     />
                     <label
                       htmlFor="name"
-                      className="absolute left-0 top-3 text-sm text-white/40 origin-[0_0] transition-all duration-300 pointer-events-none peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:text-brand-orange font-body font-medium"
+                      className="absolute left-0 top-3 text-sm text-brand-dark/50 origin-[0_0] transition-all duration-300 pointer-events-none peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:text-brand-orange font-body font-medium"
                     >
                       YOUR NAME
                     </label>
@@ -193,11 +193,11 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       placeholder=" "
                       disabled={status === "loading"}
-                      className="peer block w-full px-0 py-3 bg-transparent border-b border-white/10 text-white focus:outline-none focus:border-brand-orange placeholder-transparent transition-colors font-body text-sm"
+                      className="peer block w-full px-0 py-3 bg-transparent border-b border-brand-dark/20 text-brand-dark focus:outline-none focus:border-brand-orange placeholder-transparent transition-colors font-body text-sm"
                     />
                     <label
                       htmlFor="email"
-                      className="absolute left-0 top-3 text-sm text-white/40 origin-[0_0] transition-all duration-300 pointer-events-none peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:text-brand-orange font-body font-medium"
+                      className="absolute left-0 top-3 text-sm text-brand-dark/50 origin-[0_0] transition-all duration-300 pointer-events-none peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:text-brand-orange font-body font-medium"
                     >
                       YOUR EMAIL
                     </label>
@@ -213,11 +213,11 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       placeholder=" "
                       disabled={status === "loading"}
-                      className="peer block w-full px-0 py-3 bg-transparent border-b border-white/10 text-white focus:outline-none focus:border-brand-orange placeholder-transparent transition-colors font-body text-sm resize-none"
+                      className="peer block w-full px-0 py-3 bg-transparent border-b border-brand-dark/20 text-brand-dark focus:outline-none focus:border-brand-orange placeholder-transparent transition-colors font-body text-sm resize-none"
                     />
                     <label
                       htmlFor="message"
-                      className="absolute left-0 top-3 text-sm text-white/40 origin-[0_0] transition-all duration-300 pointer-events-none peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:text-brand-orange font-body font-medium"
+                      className="absolute left-0 top-3 text-sm text-brand-dark/50 origin-[0_0] transition-all duration-300 pointer-events-none peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 peer-focus:text-brand-orange font-body font-medium"
                     >
                       MESSAGE
                     </label>

@@ -45,7 +45,7 @@ export default function FeaturedProducts() {
   return (
     <section
       id="featured-flavours"
-      className="relative overflow-hidden bg-brand-dark py-24 md:py-32"
+      className="relative overflow-hidden bg-[#FCF9F2] py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         
@@ -68,13 +68,13 @@ export default function FeaturedProducts() {
           </motion.span>
           <motion.h2
             variants={fadeUpVariants}
-            className="mt-2 font-display text-4xl font-black uppercase tracking-tight text-white sm:text-5xl md:text-6xl"
+            className="mt-2 font-display text-4xl font-black uppercase tracking-tight text-brand-dark sm:text-5xl md:text-6xl"
           >
             OUR FINEST FLAVOURS
           </motion.h2>
           <motion.p
             variants={fadeUpVariants}
-            className="mx-auto mt-4 max-w-md font-body text-sm md:text-base text-white/60"
+            className="mx-auto mt-4 max-w-md font-body text-sm md:text-base text-brand-dark/60"
           >
             Discover our crowd favourites, packed with antioxidants, fresh organic ingredients, and tropical energy.
           </motion.p>
@@ -105,12 +105,12 @@ export default function FeaturedProducts() {
           ))}
 
           {/* CTA Card at the end of slider */}
-          <div className="flex w-[280px] shrink-0 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-white/20 bg-white/5 p-8 text-center sm:w-[320px] md:w-[350px]">
+          <div className="flex w-[280px] shrink-0 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-brand-dark/15 bg-brand-dark/[0.03] p-8 text-center sm:w-[320px] md:w-[350px]">
             <span className="text-4xl">🍦</span>
-            <h3 className="mt-4 font-display text-2xl font-black uppercase text-white">
+            <h3 className="mt-4 font-display text-2xl font-black uppercase text-brand-dark">
               Hungry for more?
             </h3>
-            <p className="mt-2 text-sm text-white/60 font-body">
+            <p className="mt-2 text-sm text-brand-dark/60 font-body">
               Explore our full range of sorbets, cubes, buckets, and ice pop lines.
             </p>
             
@@ -126,7 +126,7 @@ export default function FeaturedProducts() {
         </div>
 
         {/* Small drag visual hint */}
-        <div className="mt-4 flex items-center justify-center gap-2 text-white/30 text-xs font-bold uppercase tracking-widest font-display select-none">
+        <div className="mt-4 flex items-center justify-center gap-2 text-brand-dark/40 text-xs font-bold uppercase tracking-widest font-display select-none">
           <span>DRAG TO SCROLL</span>
           <ArrowRight size={12} className="animate-pulse" />
         </div>

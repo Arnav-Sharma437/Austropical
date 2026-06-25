@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, ArrowUpRight } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
 
@@ -41,12 +42,29 @@ const CONTACT_LINKS = [
 ];
 
 export default function Footer() {
+  const [logoSrc, setLogoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadLogo() {
+      try {
+        const res = await fetch("/api/logo");
+        const data = await res.json();
+        if (data.files && data.files.length > 0) {
+          setLogoSrc(`/logo/${data.files[0]}`);
+        }
+      } catch (err) {
+        console.error("Failed to load footer logo:", err);
+      }
+    }
+    loadLogo();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="relative bg-brand-dark pt-24 pb-12 text-white">
+    <footer className="relative bg-[#FAF6EE] pt-24 pb-12 text-brand-dark">
       
       {/* Wavy SVG divider on top of footer */}
       <div className="absolute left-0 right-0 top-0 w-full overflow-hidden leading-[0] translate-y-[-99%] pointer-events-none">
@@ -57,7 +75,7 @@ export default function Footer() {
         >
           <path
             d="M0,96 C280,32 560,160 840,64 C1120,-32 1280,32 1440,0 L1440,120 L0,120 Z"
-            fill="#0D0D0D"
+            fill="#FAF6EE"
           />
         </svg>
       </div>
@@ -68,21 +86,33 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="flex flex-col gap-4 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2" data-hover="true">
-              <span className="font-display text-3xl font-black lowercase tracking-tighter text-white">
-                austropical
-              </span>
+              {logoSrc ? (
+                <div className="relative h-10 w-36 flex items-center">
+                  <Image
+                    src={logoSrc}
+                    alt="austropical"
+                    fill
+                    className="object-contain object-left"
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <span className="font-display text-3xl font-black lowercase tracking-tighter text-brand-dark">
+                  austropical
+                </span>
+              )}
             </Link>
-            <p className="max-w-xs text-sm text-white/50 leading-relaxed font-body">
+            <p className="max-w-xs text-sm text-brand-dark/60 leading-relaxed font-body">
               Australia's premium tropical superfood ice cream. 100% Vegan. Gluten-free. Certified organic. Bringing the sun to your spoon.
             </p>
             <div className="flex items-center gap-4 mt-2">
-              <MagneticButton className="h-10 w-10 rounded-full border border-white/10 text-white hover:border-brand-orange hover:bg-brand-orange">
+              <MagneticButton className="h-10 w-10 rounded-full border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:bg-brand-orange hover:text-white">
                 <InstagramIcon size={16} />
               </MagneticButton>
-              <MagneticButton className="h-10 w-10 rounded-full border border-white/10 text-white hover:border-brand-orange hover:bg-brand-orange">
+              <MagneticButton className="h-10 w-10 rounded-full border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:bg-brand-orange hover:text-white">
                 <FacebookIcon size={16} />
               </MagneticButton>
-              <MagneticButton className="h-10 w-10 rounded-full border border-white/10 text-white hover:border-brand-orange hover:bg-brand-orange">
+              <MagneticButton className="h-10 w-10 rounded-full border border-brand-dark/15 text-brand-dark hover:border-brand-orange hover:bg-brand-orange hover:text-white">
                 <Mail size={16} />
               </MagneticButton>
             </div>
@@ -93,10 +123,10 @@ export default function Footer() {
             <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-brand-orange">
               SHOP
             </h4>
-            <ul className="flex flex-col gap-2 font-body text-sm text-white/60">
+            <ul className="flex flex-col gap-2 font-body text-sm text-brand-dark/70">
               {SHOP_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="hover:text-brand-dark transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -109,10 +139,10 @@ export default function Footer() {
             <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-brand-pink">
               AUSTROPICAL
             </h4>
-            <ul className="flex flex-col gap-2 font-body text-sm text-white/60">
+            <ul className="flex flex-col gap-2 font-body text-sm text-brand-dark/70">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="hover:text-brand-dark transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -125,10 +155,10 @@ export default function Footer() {
             <h4 className="font-display text-sm font-extrabold uppercase tracking-wider text-brand-yellow">
               SAY HELLO
             </h4>
-            <ul className="flex flex-col gap-2 font-body text-sm text-white/60">
+            <ul className="flex flex-col gap-2 font-body text-sm text-brand-dark/70">
               {CONTACT_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="hover:text-brand-dark transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -140,22 +170,22 @@ export default function Footer() {
 
         {/* Huge stretched brand text */}
         <div className="relative mt-16 select-none overflow-hidden text-center md:mt-24">
-          <h2 className="font-display text-[14vw] font-black leading-none lowercase tracking-tighter text-white/[0.03]">
+          <h2 className="font-display text-[14vw] font-black leading-none lowercase tracking-tighter text-brand-dark/[0.04]">
             austropical
           </h2>
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 text-xs text-white/40 md:flex-row font-body">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-brand-dark/10 pt-8 text-xs text-brand-dark/50 md:flex-row font-body">
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-            <Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link href="/" className="hover:text-brand-dark transition-colors">Privacy Policy</Link>
+            <Link href="/" className="hover:text-brand-dark transition-colors">Terms of Service</Link>
+            <Link href="/" className="hover:text-brand-dark transition-colors">Refund Policy</Link>
           </div>
           <p>© {new Date().getFullYear()} Austropical. Australia's Brighter Snack Choice. Made with 🧡</p>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1 hover:text-white transition-colors uppercase font-display font-bold tracking-wider"
+            className="flex items-center gap-1 hover:text-brand-dark transition-colors uppercase font-display font-bold tracking-wider"
           >
             Back to top <ArrowUpRight size={14} />
           </button>

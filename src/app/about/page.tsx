@@ -55,7 +55,7 @@ export default function AboutPage() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="bg-brand-dark min-h-screen text-white overflow-visible">
+    <div className="bg-[#FCF9F2] min-h-screen text-brand-dark overflow-visible">
       
       {/* 1. Page Hero */}
       <section className="relative flex h-[60vh] min-h-[450px] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-brand-orange via-brand-pink to-brand-purple px-6 text-center">
@@ -81,7 +81,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. Philosophy (Alternating Sections) */}
-      <section id="philosophy" className="py-24 px-6 md:px-12">
+      <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#FCF9F2]">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             
@@ -96,13 +96,13 @@ export default function AboutPage() {
               <span className="font-display text-xs font-black uppercase tracking-widest text-brand-pink">
                 OUR PHILOSOPHY
               </span>
-              <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+              <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
                 NATURE'S BRIGHTEST ENERGY
               </h2>
-              <p className="mt-6 font-body text-sm md:text-base text-white/60 leading-relaxed">
+              <p className="mt-6 font-body text-sm md:text-base text-brand-dark/70 leading-relaxed">
                 We believe that snacking shouldn't make you feel sluggish. Traditional ice creams are packed with dairy fat and processed sugar, leading to heavy crashes.
               </p>
-              <p className="mt-4 font-body text-sm md:text-base text-white/60 leading-relaxed">
+              <p className="mt-4 font-body text-sm md:text-base text-brand-dark/70 leading-relaxed">
                 By harnessing the natural creaminess of organic wild acai, coconuts, and ripe tropical fruits, we deliver the same premium velvety scoop without the dairy fog. It's clean fuel for active, sun-kissed lifestyles.
               </p>
             </motion.div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8 }}
-              className="relative h-[300px] sm:h-[400px] w-full rounded-2xl overflow-hidden border border-white/10"
+              className="relative h-[300px] sm:h-[400px] w-full rounded-2xl overflow-hidden border border-brand-dark/10 bg-brand-dark/[0.02]"
             >
               <Image
                 src="https://placehold.co/800x600/FF1493/FFFFFF?text=Austropical+Pulp"
@@ -130,21 +130,21 @@ export default function AboutPage() {
       </section>
 
       {/* 3. Timeline (Self-Drawing Line on Scroll) */}
-      <section ref={timelineRef} className="relative py-24 px-6 md:px-12 bg-white/[0.01] border-y border-white/5">
+      <section ref={timelineRef} className="relative py-24 px-6 md:px-12 bg-[#FAF6EE] border-y border-brand-dark/5">
         <div className="mx-auto max-w-3xl">
           
           <div className="text-center mb-20">
             <span className="font-display text-xs font-black uppercase tracking-widest text-brand-orange">
               HOW WE GREW
             </span>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
               THE JOURNEY SO FAR
             </h2>
           </div>
 
           <div className="relative mt-12 w-full">
             {/* Vertical Center Line */}
-            <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-white/10" />
+            <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-brand-dark/10" />
             
             {/* Scroll-Triggered Progress Line */}
             <motion.div
@@ -160,7 +160,7 @@ export default function AboutPage() {
                   <div key={idx} className="relative grid grid-cols-1 md:grid-cols-2 w-full items-center">
                     
                     {/* Circle Node */}
-                    <div className="absolute left-1/2 top-1/2 z-20 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-dark bg-brand-orange shadow-md shadow-brand-orange/40" />
+                    <div className="absolute left-1/2 top-1/2 z-20 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#FCF9F2] bg-brand-orange shadow-md shadow-brand-orange/40" />
 
                     {/* Milestone Card */}
                     <motion.div
@@ -168,17 +168,17 @@ export default function AboutPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.6, delay: 0.1 }}
-                      className={`flex flex-col items-start p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md max-w-sm w-full mx-auto ${
+                      className={`flex flex-col items-start p-6 rounded-2xl border border-brand-dark/10 bg-white/80 shadow-lg shadow-brand-dark/[0.02] backdrop-blur-md max-w-sm w-full mx-auto ${
                         isLeft ? "md:mr-10" : "md:col-start-2 md:ml-10"
                       }`}
                     >
                       <span className="font-display text-2xl font-black text-brand-orange leading-none">
                         {item.year}
                       </span>
-                      <h3 className="mt-2 font-display text-lg font-bold uppercase text-white">
+                      <h3 className="mt-2 font-display text-lg font-bold uppercase text-brand-dark">
                         {item.title}
                       </h3>
-                      <p className="mt-2 font-body text-xs leading-relaxed text-white/50">
+                      <p className="mt-2 font-body text-xs leading-relaxed text-brand-dark/60">
                         {item.description}
                       </p>
                     </motion.div>
@@ -193,13 +193,13 @@ export default function AboutPage() {
       </section>
 
       {/* 4. Values (3 cards) */}
-      <section className="py-24 px-6 md:px-12 bg-[#0c0516]">
+      <section className="py-24 px-6 md:px-12 bg-[#FCF9F2]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <span className="font-display text-xs font-black uppercase tracking-widest text-brand-green">
               OUR STANDARDS
             </span>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
               CORE VALUES
             </h2>
           </div>
@@ -216,13 +216,13 @@ export default function AboutPage() {
                 key={idx}
                 variants={fadeUpVariants}
                 whileHover={{ y: -8 }}
-                className="flex flex-col items-center text-center p-8 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md"
+                className="flex flex-col items-center text-center p-8 rounded-2xl border border-brand-dark/10 bg-[#FAF6EE] shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <span className="text-4xl mb-4 select-none">{val.icon}</span>
-                <h3 className="font-display text-lg font-black uppercase text-white">
+                <h3 className="font-display text-lg font-black uppercase text-brand-dark">
                   {val.title}
                 </h3>
-                <p className="mt-2 font-body text-xs text-white/55 leading-relaxed">
+                <p className="mt-2 font-body text-xs text-brand-dark/60 leading-relaxed">
                   {val.text}
                 </p>
               </motion.div>
@@ -232,13 +232,13 @@ export default function AboutPage() {
       </section>
 
       {/* 5. Team Section */}
-      <section id="team" className="py-24 px-6 md:px-12 bg-brand-dark">
+      <section id="team" className="py-24 px-6 md:px-12 bg-[#FAF6EE] border-t border-brand-dark/5">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <span className="font-display text-xs font-black uppercase tracking-widest text-brand-yellow">
               THE TEAM
             </span>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-black uppercase text-brand-dark sm:text-4xl">
               MEET THE SUN-CHASERS
             </h2>
           </div>
@@ -253,7 +253,7 @@ export default function AboutPage() {
                   boxShadow: `0 15px 30px -10px ${member.color}25`
                 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="flex flex-col items-center text-center p-8 rounded-3xl border border-white/5 bg-white/[0.03] backdrop-blur-md"
+                className="flex flex-col items-center text-center p-8 rounded-3xl border border-brand-dark/10 bg-white/70 shadow-md"
               >
                 <div
                   className="flex h-24 w-24 items-center justify-center rounded-full text-5xl mb-6 shadow-2xl"
@@ -261,13 +261,13 @@ export default function AboutPage() {
                 >
                   {member.emoji}
                 </div>
-                <h3 className="font-display text-xl font-extrabold text-white uppercase tracking-tight">
+                <h3 className="font-display text-xl font-extrabold text-brand-dark uppercase tracking-tight">
                   {member.name}
                 </h3>
-                <p className="mt-1 font-body text-xs font-bold text-white/40 uppercase tracking-widest">
+                <p className="mt-1 font-body text-xs font-bold text-brand-dark/50 uppercase tracking-widest">
                   {member.role}
                 </p>
-                <p className="mt-4 font-body text-xs text-white/50 leading-relaxed max-w-xs">
+                <p className="mt-4 font-body text-xs text-brand-dark/60 leading-relaxed max-w-xs">
                   Passionate about active lifestyles, sustainable farming, and mixing the perfect tropical batch.
                 </p>
               </motion.div>

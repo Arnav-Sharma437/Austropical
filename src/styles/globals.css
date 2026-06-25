@@ -9,10 +9,10 @@
   --font-display: 'Syne', sans-serif;
 }
 
-/* Default to dark bg for high-end tropical feel */
+/* Default to premium cream bg for high-end feel */
 body {
-  background-color: #0D0D0D;
-  color: #FFFFFF;
+  background-color: #FCF9F2;
+  color: #0D0D0D;
   font-family: var(--font-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;

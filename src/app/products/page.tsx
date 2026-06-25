@@ -39,7 +39,7 @@ function ProductsContent() {
     : products.filter(p => p.category === activeFilter);
 
   return (
-    <div className="bg-brand-dark min-h-screen text-white pt-32 pb-24 px-6 md:px-12">
+    <div className="bg-[#FCF9F2] min-h-screen text-brand-dark pt-32 pb-24 px-6 md:px-12">
       <div className="mx-auto max-w-7xl">
         
         {/* Page Hero */}
@@ -47,10 +47,10 @@ function ProductsContent() {
           <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-orange">
             OUR CATALOGUE
           </span>
-          <h1 className="mt-2 font-display text-5xl font-black uppercase tracking-tight text-white sm:text-6xl md:text-7xl">
+          <h1 className="mt-2 font-display text-5xl font-black uppercase tracking-tight text-brand-dark sm:text-6xl md:text-7xl">
             OUR FLAVOURS
           </h1>
-          <p className="mx-auto mt-4 max-w-md font-body text-sm md:text-base text-white/50">
+          <p className="mx-auto mt-4 max-w-md font-body text-sm md:text-base text-brand-dark/60">
             Explore our premium range of acai buckets, ice pop lines, smoothie cubes, and sorbets. Handcrafted for a brighter snack choice.
           </p>
         </div>
@@ -65,8 +65,8 @@ function ProductsContent() {
                 onClick={() => handleFilterChange(category)}
                 className={`relative shrink-0 rounded-full px-6 py-3 font-display text-xs font-black uppercase tracking-wider transition-all duration-300 border ${
                   isActive
-                    ? "bg-brand-purple border-brand-purple text-white shadow-lg shadow-brand-purple/20"
-                    : "border-white/10 hover:border-white/30 text-white/70 hover:text-white"
+                    ? "bg-brand-dark border-brand-dark text-white shadow-lg shadow-brand-dark/15"
+                    : "border-brand-dark/10 hover:border-brand-dark/30 text-brand-dark/70 hover:text-brand-dark bg-white/40"
                 }`}
                 data-hover="true"
               >
@@ -101,7 +101,7 @@ function ProductsContent() {
           </AnimatePresence>
 
           {filteredProducts.length === 0 && (
-            <div className="text-center py-20 text-white/40">
+            <div className="text-center py-20 text-brand-dark/40">
               No products found in this category.
             </div>
           )}
@@ -114,7 +114,7 @@ function ProductsContent() {
 
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div className="bg-brand-dark min-h-screen pt-32 text-center text-white font-display text-xl">Loading catalog...</div>}>
+    <Suspense fallback={<div className="bg-[#FCF9F2] min-h-screen pt-32 text-center text-brand-dark font-display text-xl">Loading catalog...</div>}>
       <ProductsContent />
     </Suspense>
   );
