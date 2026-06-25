@@ -3,7 +3,31 @@
 import React, { useState } from "react";
 
 export default function WalkingProduct() {
+  const [srcIndex, setSrcIndex] = useState(0);
   const [imgFailed, setImgFailed] = useState(false);
+
+  const sources = [
+    "/walking-product/coconut-walking.png",
+    "/walking-product/coconut-walking.webp",
+    "/walking-product/coconut-walking.jpg",
+    "/walking-product/coconut-walking.jpeg",
+    "/walking-product/coconut-walking.svg",
+    "/banners/walking-product.png",
+    "/banners/walking-product.webp",
+    "/banners/walking-product.jpg",
+    "/banners/walking-product.jpeg",
+    "/banners/walking-product.svg"
+  ];
+
+  const handleImageError = () => {
+    if (srcIndex < sources.length - 1) {
+      setSrcIndex(srcIndex + 1);
+    } else {
+      setImgFailed(true);
+    }
+  };
+
+  const currentSrc = sources[srcIndex];
 
   return (
     <div className="absolute bottom-2 left-0 w-full overflow-visible pointer-events-none z-10">
@@ -13,9 +37,9 @@ export default function WalkingProduct() {
         <div className="relative w-[70px] h-[70px] flex items-center justify-center">
           {!imgFailed ? (
             <img
-              src="/banners/walking-product.png"
+              src={currentSrc}
               alt="Walking Product"
-              onError={() => setImgFailed(true)}
+              onError={handleImageError}
               className="w-full h-full object-contain drop-shadow-md"
             />
           ) : (

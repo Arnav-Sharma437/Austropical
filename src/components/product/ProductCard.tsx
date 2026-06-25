@@ -24,6 +24,24 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
 
   const { id, name, category, price, image, ingredients, bgColor, textColor } = product;
+  const [imgSrcIndex, setImgSrcIndex] = useState(0);
+
+  const imageCandidates = [
+    `/products/${id}.png`,
+    `/products/${id}.webp`,
+    `/products/${id}.jpg`,
+    `/products/${id}.jpeg`,
+    `/products/${id}.svg`,
+    image
+  ];
+
+  const currentSrc = imageCandidates[imgSrcIndex] || image;
+
+  const handleImageError = () => {
+    if (imgSrcIndex < imageCandidates.length - 1) {
+      setImgSrcIndex(imgSrcIndex + 1);
+    }
+  };
 
   // Determine text coloring based on card background contrast
   const isLightBg = textColor === "#0D0D0D" || bgColor === "#FFD700" || bgColor === "#FFF";
@@ -86,13 +104,15 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="relative z-10 h-[190px] w-[190px]"
           >
             <Image
-              src={image}
+              src={currentSrc}
               alt={name}
               fill
               sizes="(max-width: 768px) 190px, 190px"
               placeholder="blur"
               blurDataURL={solidColorBlurDataURL}
               className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)]"
+              unoptimized={true}
+              onError={handleImageError}
             />
           </motion.div>
         </div>

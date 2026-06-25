@@ -4,21 +4,33 @@ import React, { useState } from "react";
 
 interface FruitPlaceholderProps {
   name: string;
-  imageSrc: string;
+  basePath: string;
   fallbackSvg: React.ReactNode;
   className?: string;
 }
 
-const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, imageSrc, fallbackSvg, className }) => {
+const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, basePath, fallbackSvg, className }) => {
+  const extensions = [".png", ".webp", ".jpg", ".jpeg", ".svg"];
+  const [extIndex, setExtIndex] = useState(0);
   const [imgFailed, setImgFailed] = useState(false);
+
+  const handleImageError = () => {
+    if (extIndex < extensions.length - 1) {
+      setExtIndex(extIndex + 1);
+    } else {
+      setImgFailed(true);
+    }
+  };
+
+  const currentSrc = `${basePath}${extensions[extIndex]}`;
 
   return (
     <div className={`relative select-none pointer-events-none transition-transform hover:scale-105 duration-500 ${className}`}>
       {!imgFailed ? (
         <img
-          src={imageSrc}
+          src={currentSrc}
           alt={name}
-          onError={() => setImgFailed(true)}
+          onError={handleImageError}
           className="w-full h-full object-contain"
         />
       ) : (
@@ -37,7 +49,7 @@ export default function FloatingFruits() {
         {/* Acai berries cluster - top left, slight rotation, animate duration 4s */}
         <FruitPlaceholder
           name="Acai Cluster"
-          imageSrc="/fruits/acai-cluster.png"
+          basePath="/fruits/acai-cluster"
           className="animate-float-left-4 origin-center rotate-[-12deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -67,7 +79,7 @@ export default function FloatingFruits() {
         {/* Fig/purple fruit cut - middle left, animate duration 6s */}
         <FruitPlaceholder
           name="Fig Cut"
-          imageSrc="/fruits/fig.png"
+          basePath="/fruits/fig"
           className="animate-float-left-6 origin-center rotate-[8deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-28 h-28 drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
@@ -93,7 +105,7 @@ export default function FloatingFruits() {
         {/* Strawberries - bottom left, animate duration 5s */}
         <FruitPlaceholder
           name="Strawberry"
-          imageSrc="/fruits/strawberry.png"
+          basePath="/fruits/strawberry"
           className="animate-float-left-5 origin-center rotate-[-5deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -130,7 +142,7 @@ export default function FloatingFruits() {
         {/* Purple acai cross-section - top right, animate duration 3s */}
         <FruitPlaceholder
           name="Acai Cross Section"
-          imageSrc="/fruits/acai-cross.png"
+          basePath="/fruits/acai-cross"
           className="animate-float-right-3 origin-center rotate-[15deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -157,7 +169,7 @@ export default function FloatingFruits() {
         {/* Another acai cluster - middle right, animate duration 5s */}
         <FruitPlaceholder
           name="Acai Cluster 2"
-          imageSrc="/fruits/acai-cluster-2.png"
+          basePath="/fruits/acai-cluster-2"
           className="animate-float-right-5 origin-center rotate-[-6deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-26 h-26 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -187,7 +199,7 @@ export default function FloatingFruits() {
         {/* Ice pop/fruit - bottom right, animate duration 4s */}
         <FruitPlaceholder
           name="Ice Pop"
-          imageSrc="/fruits/icepop.png"
+          basePath="/fruits/icepop"
           className="animate-float-right-4 origin-center rotate-[10deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 120" className="w-24 h-28 drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]">

@@ -111,7 +111,9 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
   // Custom states
   const [quantity, setQuantity] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState<any>(null);
-  const [activeImage, setActiveImage] = useState<string>("");
+  const [imageCandidates, setImageCandidates] = useState<string[]>([]);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const activeImage = imageCandidates[activeImageIndex] || "";
   const [reviews, setReviews] = useState<any[]>([]);
   const [isAdded, setIsAdded] = useState(false);
 
@@ -142,11 +144,20 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
               setSelectedVariant({ name: "500ml Tub", priceOffset: 0 });
             }
 
+            const candidates = [
+              `/products/${params.slug}.png`,
+              `/products/${params.slug}.webp`,
+              `/products/${params.slug}.jpg`,
+              `/products/${params.slug}.jpeg`,
+              `/products/${params.slug}.svg`
+            ];
             if (data.images && data.images.length > 0) {
-              setActiveImage(data.images[0]);
+              candidates.push(...data.images);
             } else if (data.image) {
-              setActiveImage(data.image);
+              candidates.push(data.image);
             }
+            setImageCandidates(candidates);
+            setActiveImageIndex(0);
             setReviews(getInitialReviews(data.name));
             setLoading(false);
             return;
@@ -161,7 +172,16 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       if (staticProduct) {
         setProduct(staticProduct);
         setIsStatic(true);
-        setActiveImage(staticProduct.image);
+        const candidates = [
+          `/products/${params.slug}.png`,
+          `/products/${params.slug}.webp`,
+          `/products/${params.slug}.jpg`,
+          `/products/${params.slug}.jpeg`,
+          `/products/${params.slug}.svg`,
+          staticProduct.image
+        ];
+        setImageCandidates(candidates);
+        setActiveImageIndex(0);
         setReviews(getInitialReviews(staticProduct.name));
         
         // Mock size variants for static products
@@ -327,7 +347,12 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                   placeholder="blur"
                   blurDataURL={solidColorBlurDataURL}
                   className="object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.45)] hover:scale-105 transition-transform duration-500 origin-center cursor-zoom-in"
-                  unoptimized={product.image?.endsWith(".webp")}
+                  unoptimized={true}
+                  onError={() => {
+                    if (activeImageIndex < imageCandidates.length - 1) {
+                      setActiveImageIndex(activeImageIndex + 1);
+                    }
+                  }}
                 />
               </motion.div>
 
@@ -337,7 +362,15 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                   {product.images.map((img: string, idx: number) => (
                     <button
                       key={idx}
-                      onClick={() => setActiveImage(img)}
+                      onClick={() => {
+                        const cIdx = imageCandidates.indexOf(img);
+                        if (cIdx !== -1) {
+                          setActiveImageIndex(cIdx);
+                        } else {
+                          setImageCandidates(prev => [...prev, img]);
+                          setActiveImageIndex(imageCandidates.length);
+                        }
+                      }}
                       className={`relative w-16 h-16 rounded-xl overflow-hidden border-2 transition-all p-1 bg-white/10 ${
                         activeImage === img ? "border-brand-orange scale-105" : "border-transparent opacity-60 hover:opacity-100"
                       }`}
