@@ -1,33 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function WalkingProduct() {
-  const [srcIndex, setSrcIndex] = useState(0);
-  const [imgFailed, setImgFailed] = useState(false);
+  const [walkingProductFiles, setWalkingProductFiles] = useState<string[]>([]);
+  const [bannerFiles, setBannerFiles] = useState<string[]>([]);
 
-  const sources = [
-    "/walking-product/coconut-walking.png",
-    "/walking-product/coconut-walking.webp",
-    "/walking-product/coconut-walking.jpg",
-    "/walking-product/coconut-walking.jpeg",
-    "/walking-product/coconut-walking.svg",
-    "/banners/walking-product.png",
-    "/banners/walking-product.webp",
-    "/banners/walking-product.jpg",
-    "/banners/walking-product.jpeg",
-    "/banners/walking-product.svg"
-  ];
+  useEffect(() => {
+    async function loadAssets() {
+      try {
+        const wpRes = await fetch("/api/walking-product");
+        if (wpRes.ok) {
+          const wpData = await wpRes.json();
+          setWalkingProductFiles(wpData.files || []);
+        }
 
-  const handleImageError = () => {
-    if (srcIndex < sources.length - 1) {
-      setSrcIndex(srcIndex + 1);
-    } else {
-      setImgFailed(true);
+        const bRes = await fetch("/api/banners");
+        if (bRes.ok) {
+          const bData = await bRes.json();
+          setBannerFiles(bData.files || []);
+        }
+      } catch (err) {
+        console.error("Failed to load walking product assets:", err);
+      }
     }
+    loadAssets();
+  }, []);
+
+  const getProductSrc = () => {
+    // 1. Look in public/walking-product/ for coconut-walking or walking-product
+    if (walkingProductFiles.length > 0) {
+      const match = walkingProductFiles.find(file => {
+        const lastDot = file.lastIndexOf(".");
+        const name = lastDot !== -1 ? file.substring(0, lastDot) : file;
+        return name.toLowerCase() === "coconut-walking" || name.toLowerCase() === "walking-product";
+      });
+      if (match) return `/walking-product/${match}`;
+    }
+
+    // 2. Look in public/banners/ for walking-product
+    if (bannerFiles.length > 0) {
+      const match = bannerFiles.find(file => {
+        const lastDot = file.lastIndexOf(".");
+        const name = lastDot !== -1 ? file.substring(0, lastDot) : file;
+        return name.toLowerCase() === "walking-product";
+      });
+      if (match) return `/banners/${match}`;
+    }
+
+    return null;
   };
 
-  const currentSrc = sources[srcIndex];
+  const activeSrc = getProductSrc();
 
   return (
     <div className="absolute bottom-2 left-0 w-full overflow-visible pointer-events-none z-10">
@@ -35,11 +59,10 @@ export default function WalkingProduct() {
         
         {/* Product Tub */}
         <div className="relative w-[70px] h-[70px] flex items-center justify-center">
-          {!imgFailed ? (
+          {activeSrc ? (
             <img
-              src={currentSrc}
+              src={activeSrc}
               alt="Walking Product"
-              onError={handleImageError}
               className="w-full h-full object-contain drop-shadow-md"
             />
           ) : (

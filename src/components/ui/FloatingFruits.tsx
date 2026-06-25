@@ -1,45 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface FruitPlaceholderProps {
   name: string;
-  basePaths: string[];
+  imageSrc: string | null;
   fallbackSvg: React.ReactNode;
   className?: string;
 }
 
-const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, basePaths, fallbackSvg, className }) => {
-  const extensions = [".png", ".webp", ".jpg", ".jpeg", ".svg"];
-  
-  // Flatten combinations of base paths and extensions
-  const candidates: string[] = [];
-  basePaths.forEach(base => {
-    extensions.forEach(ext => {
-      candidates.push(`${base}${ext}`);
-    });
-  });
-
-  const [candIndex, setCandIndex] = useState(0);
-  const [imgFailed, setImgFailed] = useState(false);
-
-  const handleImageError = () => {
-    if (candIndex < candidates.length - 1) {
-      setCandIndex(candIndex + 1);
-    } else {
-      setImgFailed(true);
-    }
-  };
-
-  const currentSrc = candidates[candIndex];
-
+const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, imageSrc, fallbackSvg, className }) => {
   return (
     <div className={`relative select-none pointer-events-none transition-transform hover:scale-105 duration-500 ${className}`}>
-      {!imgFailed ? (
+      {imageSrc ? (
         <img
-          src={currentSrc}
+          src={imageSrc}
           alt={name}
-          onError={handleImageError}
           className="w-full h-full object-contain"
         />
       ) : (
@@ -50,15 +26,47 @@ const FruitPlaceholder: React.FC<FruitPlaceholderProps> = ({ name, basePaths, fa
 };
 
 export default function FloatingFruits() {
+  const [fruitFiles, setFruitFiles] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function loadFruits() {
+      try {
+        const res = await fetch("/api/fruits");
+        if (res.ok) {
+          const data = await res.json();
+          setFruitFiles(data.files || []);
+        }
+      } catch (err) {
+        console.error("Failed to load fruits:", err);
+      }
+    }
+    loadFruits();
+  }, []);
+
+  const getFruitSrc = (prefixes: string[]) => {
+    if (fruitFiles.length === 0) return null;
+    for (const prefix of prefixes) {
+      const match = fruitFiles.find(file => {
+        const lastDot = file.lastIndexOf(".");
+        const nameWithoutExt = lastDot !== -1 ? file.substring(0, lastDot) : file;
+        return nameWithoutExt.toLowerCase() === prefix.toLowerCase();
+      });
+      if (match) {
+        return `/fruits/${match}`;
+      }
+    }
+    return null;
+  };
+
   return (
     <div className="fixed inset-0 w-full h-full pointer-events-none z-10 overflow-hidden hidden md:block">
       {/* Left Side Fruits */}
       <div className="absolute left-[-20px] top-[15%] flex flex-col gap-28 items-start pl-6">
         
-        {/* Acai berries cluster - top left, slight rotation, animate duration 4s */}
+        {/* Acai berries cluster - top left */}
         <FruitPlaceholder
           name="Acai Cluster"
-          basePaths={["/fruits/acai-cluster", "/fruits/acai"]}
+          imageSrc={getFruitSrc(["acai-cluster", "acai"])}
           className="animate-float-left-4 origin-center rotate-[-12deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -85,10 +93,10 @@ export default function FloatingFruits() {
           }
         />
 
-        {/* Fig/purple fruit cut - middle left, animate duration 6s */}
+        {/* Fig/purple fruit cut - middle left */}
         <FruitPlaceholder
           name="Fig Cut"
-          basePaths={["/fruits/fig-cut", "/fruits/fig"]}
+          imageSrc={getFruitSrc(["fig-cut", "fig"])}
           className="animate-float-left-6 origin-center rotate-[8deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-28 h-28 drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
@@ -111,10 +119,10 @@ export default function FloatingFruits() {
           }
         />
 
-        {/* Strawberries - bottom left, animate duration 5s */}
+        {/* Strawberries - bottom left */}
         <FruitPlaceholder
           name="Strawberry"
-          basePaths={["/fruits/strawberry-cluster", "/fruits/strawberry"]}
+          imageSrc={getFruitSrc(["strawberry-cluster", "strawberry"])}
           className="animate-float-left-5 origin-center rotate-[-5deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -148,10 +156,10 @@ export default function FloatingFruits() {
       {/* Right Side Fruits */}
       <div className="absolute right-[-20px] top-[12%] flex flex-col gap-28 items-end pr-6">
         
-        {/* Purple acai cross-section - top right, animate duration 3s */}
+        {/* Purple acai cross-section - top right */}
         <FruitPlaceholder
           name="Acai Cross Section"
-          basePaths={["/fruits/acai-cross", "/fruits/acai"]}
+          imageSrc={getFruitSrc(["acai-cross", "acai"])}
           className="animate-float-right-3 origin-center rotate-[15deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-24 h-24 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -175,10 +183,10 @@ export default function FloatingFruits() {
           }
         />
 
-        {/* Another acai cluster - middle right, animate duration 5s */}
+        {/* Another acai cluster - middle right */}
         <FruitPlaceholder
           name="Acai Cluster 2"
-          basePaths={["/fruits/acai-cluster-2", "/fruits/acai"]}
+          imageSrc={getFruitSrc(["acai-cluster-2", "acai"])}
           className="animate-float-right-5 origin-center rotate-[-6deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 100" className="w-26 h-26 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
@@ -205,10 +213,10 @@ export default function FloatingFruits() {
           }
         />
 
-        {/* Ice pop/fruit - bottom right, animate duration 4s */}
+        {/* Ice pop/fruit - bottom right */}
         <FruitPlaceholder
           name="Ice Pop"
-          basePaths={["/fruits/icepop", "/fruits/ice-pop", "/fruits/pop"]}
+          imageSrc={getFruitSrc(["icepop", "ice-pop", "pop"])}
           className="animate-float-right-4 origin-center rotate-[10deg]"
           fallbackSvg={
             <svg viewBox="0 0 100 120" className="w-24 h-28 drop-shadow-[0_12px_24px_rgba(0,0,0,0.18)]">
