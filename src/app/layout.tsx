@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/context/CartContext";
 
 const fredoka = Fredoka({
   subsets: ["latin"],
@@ -34,15 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fredoka.variable} ${nunito.variable} scroll-smooth`}>
       <body className="antialiased">
-        <SmoothScrollProvider>
-          <CustomCursor />
-          <Navbar />
-          <main className="min-h-screen overflow-visible">
-            {children}
-          </main>
-          <Footer />
-        </SmoothScrollProvider>
+        <CartProvider>
+          <SmoothScrollProvider>
+            <CustomCursor />
+            <Navbar />
+            <main className="min-h-screen overflow-visible">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScrollProvider>
+        </CartProvider>
       </body>
     </html>
   );
 }
+

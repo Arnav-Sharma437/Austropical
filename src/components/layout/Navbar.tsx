@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import MagneticButton from "../ui/MagneticButton";
+import { useCart } from "@/context/CartContext";
 
 const LEFT_LINKS = [
   { href: "/products", label: "SHOP" },
@@ -20,6 +21,7 @@ const RIGHT_LINKS = [
 ];
 
 export default function Navbar() {
+  const { cartCount } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
@@ -207,17 +209,31 @@ export default function Navbar() {
                 LOGIN
               </Link>
               
-              <MagneticButton className="h-10 w-10 rounded-full bg-white text-brand-dark shadow-lg hover:shadow-brand-orange/20">
-                <ShoppingBag size={16} className="text-brand-dark" />
-              </MagneticButton>
+              <Link href="/cart" className="relative flex items-center justify-center">
+                <MagneticButton className="h-10 w-10 rounded-full bg-white text-brand-dark shadow-lg hover:shadow-brand-orange/20 flex items-center justify-center">
+                  <ShoppingBag size={16} className="text-brand-dark" />
+                </MagneticButton>
+                {cartCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 bg-brand-pink text-white text-[10px] font-black h-5 w-5 rounded-full flex items-center justify-center border-2 border-[#FCF9F2] shadow-sm select-none font-display">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
             </div>
           </div>
 
           {/* Mobile Buttons */}
           <div className="flex items-center gap-4 lg:hidden">
-            <MagneticButton className="h-10 w-10 rounded-full bg-white text-brand-dark shadow-md">
-              <ShoppingBag size={16} />
-            </MagneticButton>
+            <Link href="/cart" className="relative flex items-center justify-center">
+              <MagneticButton className="h-10 w-10 rounded-full bg-white text-brand-dark shadow-md flex items-center justify-center">
+                <ShoppingBag size={16} />
+              </MagneticButton>
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 bg-brand-pink text-white text-[10px] font-black h-5 w-5 rounded-full flex items-center justify-center border-2 border-[#FCF9F2] shadow-sm select-none font-display">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
             
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
