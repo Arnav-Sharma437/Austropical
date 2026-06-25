@@ -170,7 +170,7 @@ export default function Footer() {
 
         {/* Huge stretched brand text */}
         <div className="relative mt-16 select-none overflow-hidden text-center md:mt-24">
-          <h2 className="font-display text-[14vw] font-black leading-none lowercase tracking-tighter text-brand-dark/[0.04]">
+          <h2 className="font-display text-[11vw] font-black leading-none lowercase tracking-tighter text-brand-dark/[0.04]">
             austropical
           </h2>
         </div>
