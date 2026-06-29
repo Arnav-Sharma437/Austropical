@@ -120,16 +120,16 @@ const Character = () => (
       zIndex: 5,
     }}/>
 
-    {/* Flagpole - slanted up-right */}
+    {/* Flagpole - slanted up-left */}
     <div style={{
       position: 'absolute',
-      top: -65,
+      top: -50,
       left: -12,
       width: 4,
-      height: 135,
+      height: 110,
       background: '#2D1B69',
       borderRadius: 2,
-      transform: 'rotate(12deg)',
+      transform: 'rotate(-10deg)',
       transformOrigin: 'bottom center',
       zIndex: 9,
     }}/>
@@ -137,8 +137,8 @@ const Character = () => (
     {/* Wavy flag banner trailing to the right from the pole top */}
     <div style={{
       position: 'absolute',
-      top: -75,
-      left: 10,
+      top: -60,
+      left: -32,
       width: '120vw',
       height: 90,
       background: '#2D1B69',
@@ -295,7 +295,7 @@ export default function WalkingBanner() {
       {/* Desktop Version: Walking character holding wavy flag */}
       <div className="hidden md:flex" style={{
         position: 'absolute',
-        bottom: 50,
+        bottom: 25,
         alignItems: 'flex-end',
         animation: 'scene-walk 18s linear infinite',
         width: 'max-content',

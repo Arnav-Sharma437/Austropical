@@ -26,14 +26,14 @@ export default function Home() {
           {/* Row 1: Left scrolling */}
           <MarqueeText
             text={marqueeContent}
-            speed={18}
+            speed={35}
             direction="left"
             textClassName="font-display text-lg sm:text-2xl md:text-3xl font-black uppercase text-white tracking-wider"
           />
           {/* Row 2: Right scrolling */}
           <MarqueeText
             text={marqueeContent}
-            speed={22}
+            speed={40}
             direction="right"
             textClassName="font-display text-lg sm:text-2xl md:text-3xl font-black uppercase text-brand-yellow tracking-wider"
           />
