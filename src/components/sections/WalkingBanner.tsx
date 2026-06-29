@@ -3,28 +3,28 @@
 import React from 'react'
 
 // Generate parallel wavy ribbon clip path coordinates dynamically:
-// Top wave centers around Y=25, bottom wave centers around Y=70.
-// Amplitude is 15px, wavelength is 120px.
-// Ribbon height is exactly 45px.
+// Top wave centers around Y=15, bottom wave centers around Y=45.
+// Amplitude is 8px, wavelength is 100px.
+// Ribbon height is exactly 30px.
 const generateFlagPath = () => {
-  let topPath = `M 0 25`;
-  const waveLength = 120;
-  const numWaves = 35; // 35 * 120 = 4200px (covers large viewports)
+  let topPath = `M 0 15`;
+  const waveLength = 100;
+  const numWaves = 45; // covers up to 4500px width
   
   for (let i = 0; i < numWaves; i++) {
     const x = i * waveLength;
-    topPath += ` Q ${x + 30} 5, ${x + 60} 25 Q ${x + 90} 45, ${x + 120} 25`;
+    topPath += ` Q ${x + 25} 7, ${x + 50} 15 Q ${x + 75} 23, ${x + 100} 15`;
   }
   
   const endX = numWaves * waveLength;
-  let bottomPath = ` L ${endX} 70`;
+  let bottomPath = ` L ${endX} 45`;
   
   for (let i = numWaves - 1; i >= 0; i--) {
     const x = i * waveLength;
-    bottomPath += ` Q ${x + 90} 90, ${x + 60} 70 Q ${x + 30} 50, ${x} 70`;
+    bottomPath += ` Q ${x + 75} 53, ${x + 50} 45 Q ${x + 25} 37, ${x} 45`;
   }
   
-  bottomPath += ` L 0 70 Z`;
+  bottomPath += ` L 0 45 Z`;
   return topPath + bottomPath;
 };
 
@@ -123,10 +123,10 @@ const Character = () => (
     {/* Flagpole - slanted up-left */}
     <div style={{
       position: 'absolute',
-      top: -50,
+      top: -40,
       left: -12,
       width: 4,
-      height: 110,
+      height: 100,
       background: '#2D1B69',
       borderRadius: 2,
       transform: 'rotate(-8deg)',
@@ -137,10 +137,10 @@ const Character = () => (
     {/* Wavy flag banner trailing to the right from the pole top */}
     <div style={{
       position: 'absolute',
-      top: -60,
-      left: -28,
+      top: -48,
+      left: -26,
       width: '120vw',
-      height: 90,
+      height: 60,
       background: '#2D1B69',
       clipPath: `path('${FLAG_PATH}')`,
       display: 'flex',
@@ -153,29 +153,32 @@ const Character = () => (
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 32,
+        gap: 20,
         whiteSpace: 'nowrap',
         animation: 'flag-text-scroll 12s linear infinite',
         color: 'white',
         fontWeight: 900,
-        fontSize: 18,
+        fontSize: 12,
         letterSpacing: 1,
         fontFamily: 'Fredoka One, sans-serif',
-        marginTop: 10,
+        marginTop: 5,
       }}>
         {[
           '⚡ 100% VEGAN',
           '⚡ GLUTEN FREE',
-          '⚡ CERTIFIED ORGANIC',
-          '⚡ NO ADDED SUGAR',
+          '⚡ ORGANIC',
           '⚡ DAIRY FREE',
-          '⚡ AMAZON SUPERFOOD',
-          '⚡ ESSENTIAL MINERALS',
-          '⚡ NON GMO',
-          '⚡ 100% PLANT-BASED',
+          '⚡ PLANT-BASED',
           '⚡ 100% VEGAN',
           '⚡ GLUTEN FREE',
-          '⚡ CERTIFIED ORGANIC',
+          '⚡ ORGANIC',
+          '⚡ DAIRY FREE',
+          '⚡ PLANT-BASED',
+          '⚡ 100% VEGAN',
+          '⚡ GLUTEN FREE',
+          '⚡ ORGANIC',
+          '⚡ DAIRY FREE',
+          '⚡ PLANT-BASED',
         ].map((text, i) => (
           <span key={i}>{text}</span>
         ))}
@@ -188,7 +191,7 @@ const WavyFlagMobile = () => (
   <div style={{
     position: 'relative',
     width: '100%',
-    height: 90,
+    height: 60,
     background: '#2D1B69',
     clipPath: `path('${FLAG_PATH}')`,
     display: 'flex',
@@ -200,29 +203,27 @@ const WavyFlagMobile = () => (
     <div style={{
       display: 'flex',
       alignItems: 'center',
-      gap: 24,
+      gap: 20,
       whiteSpace: 'nowrap',
       animation: 'flag-text-scroll 12s linear infinite',
       color: 'white',
       fontWeight: 900,
-      fontSize: 16,
+      fontSize: 12,
       letterSpacing: 1,
       fontFamily: 'Fredoka One, sans-serif',
-      marginTop: 10,
+      marginTop: 5,
     }}>
       {[
         '⚡ 100% VEGAN',
         '⚡ GLUTEN FREE',
-        '⚡ CERTIFIED ORGANIC',
-        '⚡ NO ADDED SUGAR',
+        '⚡ ORGANIC',
         '⚡ DAIRY FREE',
-        '⚡ AMAZON SUPERFOOD',
-        '⚡ ESSENTIAL MINERALS',
-        '⚡ NON GMO',
-        '⚡ 100% PLANT-BASED',
+        '⚡ PLANT-BASED',
         '⚡ 100% VEGAN',
         '⚡ GLUTEN FREE',
-        '⚡ CERTIFIED ORGANIC',
+        '⚡ ORGANIC',
+        '⚡ DAIRY FREE',
+        '⚡ PLANT-BASED',
       ].map((text, i) => (
         <span key={i}>{text}</span>
       ))}
