@@ -239,3 +239,32 @@ h1, h2, h3, h4, h5, h6 {
   animation: step-right-leg 0.5s ease-in-out infinite;
 }
 
+/* Redesigned LTR Walking animations */
+@keyframes walk {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes leg-left {
+  0%, 100% { transform: rotate(-25deg) translateY(0px); }
+  50% { transform: rotate(25deg) translateY(-6px); }
+}
+
+@keyframes leg-right {
+  0%, 100% { transform: rotate(25deg) translateY(-6px); }
+  50% { transform: rotate(-25deg) translateY(0px); }
+}
+
+.animate-walk-ltr {
+  animation: walk 20s linear infinite;
+}
+
+.animate-leg-left {
+  animation: leg-left 0.5s ease-in-out infinite;
+}
+
+.animate-leg-right {
+  animation: leg-right 0.5s ease-in-out infinite;
+}
+
+

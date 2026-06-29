@@ -55,7 +55,7 @@ export default function WalkingProduct() {
 
   return (
     <div className="absolute bottom-2 left-0 w-full overflow-visible pointer-events-none z-10">
-      <div className="animate-walk-across flex flex-col items-center w-[120px] overflow-visible">
+      <div className="animate-walk-ltr flex flex-col items-center w-[120px] overflow-visible">
         
         {/* Product Tub */}
         <div className="relative w-[70px] h-[70px] flex items-center justify-center">
@@ -84,12 +84,12 @@ export default function WalkingProduct() {
           )}
         </div>
 
-        {/* Cartoon Legs (Two white oval shapes that alternate up/down) */}
-        <div className="flex justify-between w-[32px] h-[24px] mt-[-6px] overflow-visible px-1">
+        {/* Cartoon Legs (Two white rounded rectangles that alternate up/down) */}
+        <div className="flex justify-between w-[32px] h-[24px] mt-[-6px] overflow-visible px-2">
           {/* Left Leg */}
-          <div className="w-[10px] h-[20px] bg-white border-2 border-brand-dark rounded-full origin-top animate-step-left" />
+          <div className="w-[8px] h-[18px] bg-white rounded-full origin-top animate-leg-left" />
           {/* Right Leg */}
-          <div className="w-[10px] h-[20px] bg-white border-2 border-brand-dark rounded-full origin-top animate-step-right" />
+          <div className="w-[8px] h-[18px] bg-white rounded-full origin-top animate-leg-right" />
         </div>
 
       </div>
