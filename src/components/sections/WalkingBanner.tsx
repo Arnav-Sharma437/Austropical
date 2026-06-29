@@ -30,8 +30,6 @@ const generateMobileFlagPath = () => {
 
 const FLAG_PATH_MOBILE = generateMobileFlagPath();
 
-// Desktop flag path is 380px wide with a beautiful swallowtail cut-out at the end
-const FLAG_PATH_DESKTOP = "M0,20 Q30,8 60,20 Q90,32 120,20 Q150,8 180,20 Q210,32 240,20 Q270,8 300,20 Q330,32 360,20 Q370,14 380,20 L350,46 L380,72 Q370,66 360,72 Q330,84 300,72 Q270,60 240,72 Q210,84 180,72 Q150,60 120,72 Q90,84 60,72 Q30,60 0,72 Z";
 
 const Character = () => (
   <div style={{ position: 'relative', width: 80, height: 130 }}>
@@ -142,10 +140,10 @@ const Character = () => (
       position: 'absolute',
       top: -53,
       left: -26,
-      width: 380,
+      width: '120vw',
       height: 95,
       background: '#2D1B69',
-      clipPath: `path('${FLAG_PATH_DESKTOP}')`,
+      clipPath: `path('${FLAG_PATH_MOBILE}')`,
       display: 'flex',
       alignItems: 'center',
       paddingLeft: 24,
@@ -232,7 +230,7 @@ const WavyFlagMobile = () => (
 const bannerStyles = `
   @keyframes scene-walk {
     0% { transform: translateX(100vw); }
-    100% { transform: translateX(-500px); }
+    100% { transform: translateX(-130vw); }
   }
 
   @keyframes leg-left-walk {
