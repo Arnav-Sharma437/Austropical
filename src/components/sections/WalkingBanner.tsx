@@ -129,7 +129,7 @@ const Character = () => (
       height: 110,
       background: '#2D1B69',
       borderRadius: 2,
-      transform: 'rotate(-10deg)',
+      transform: 'rotate(-8deg)',
       transformOrigin: 'bottom center',
       zIndex: 9,
     }}/>
@@ -138,7 +138,7 @@ const Character = () => (
     <div style={{
       position: 'absolute',
       top: -60,
-      left: -32,
+      left: -28,
       width: '120vw',
       height: 90,
       background: '#2D1B69',
@@ -147,8 +147,6 @@ const Character = () => (
       alignItems: 'center',
       paddingLeft: 24,
       overflow: 'hidden',
-      transform: 'rotate(-3deg)',
-      transformOrigin: 'left center',
       zIndex: 8,
     }}>
       {/* Repeating text content */}
