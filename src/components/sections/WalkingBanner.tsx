@@ -234,8 +234,8 @@ const WavyFlagMobile = () => (
 
 const bannerStyles = `
   @keyframes scene-walk {
-    0% { transform: translateX(-180px); }
-    100% { transform: translateX(110vw); }
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-130vw); }
   }
 
   @keyframes leg-left-walk {
