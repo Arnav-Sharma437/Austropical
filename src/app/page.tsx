@@ -4,6 +4,7 @@ import React from "react";
 import Hero from "@/components/sections/Hero";
 import MarqueeText from "@/components/ui/MarqueeText";
 import FeaturedProducts from "@/components/sections/FeaturedProducts";
+import WalkingBanner from "@/components/sections/WalkingBanner";
 import BannerMarquee from "@/components/sections/BannerMarquee";
 import WhyAustropical from "@/components/sections/WhyAustropical";
 import OurStoryTeaser from "@/components/sections/OurStoryTeaser";
@@ -38,6 +39,9 @@ export default function Home() {
           />
         </div>
       </div>
+
+      {/* Animated Walking Banner */}
+      <WalkingBanner />
 
       {/* 3. Featured Products */}
       <FeaturedProducts />

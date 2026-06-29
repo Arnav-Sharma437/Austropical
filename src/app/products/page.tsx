@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { products, CATEGORIES } from "@/lib/products";
 import ProductCard from "@/components/product/ProductCard";
 import { staggerContainer, fadeUpVariants } from "@/lib/animations";
+import WalkingBanner from "@/components/sections/WalkingBanner";
 
 function ProductsContent() {
   const searchParams = useSearchParams();
@@ -39,11 +40,11 @@ function ProductsContent() {
     : products.filter(p => p.category === activeFilter);
 
   return (
-    <div className="bg-[#FCF9F2] min-h-screen text-brand-dark pt-32 pb-24 px-6 md:px-12">
-      <div className="mx-auto max-w-7xl">
-        
-        {/* Page Hero */}
-        <div className="text-center mb-16">
+    <div className="bg-[#FCF9F2] min-h-screen text-brand-dark pt-32 pb-24">
+      
+      {/* Page Hero */}
+      <div className="mx-auto max-w-7xl px-6 md:px-8 mb-12">
+        <div className="text-center">
           <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-brand-orange">
             OUR CATALOGUE
           </span>
@@ -54,7 +55,14 @@ function ProductsContent() {
             Explore our premium range of acai buckets, ice pop lines, smoothie cubes, and sorbets. Handcrafted for a brighter snack choice.
           </p>
         </div>
+      </div>
 
+      {/* Walking Banner Section */}
+      <div className="w-full mb-16">
+        <WalkingBanner />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
         {/* Filter Pills Tabs (Horizontal scrolling on mobile) */}
         <div className="no-scrollbar flex w-full justify-start md:justify-center overflow-x-auto gap-3 pb-8 select-none">
           {CATEGORIES.map((category) => {
