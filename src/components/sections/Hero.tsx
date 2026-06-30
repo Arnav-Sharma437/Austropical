@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#FF8C2E] to-[#FF4F8B] pt-24 lg:pt-32">
+    <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#FF8C2E] to-[#FF4F8B] pt-24 lg:pt-32 pb-28 md:pb-32 lg:pb-12">
       {/* Scattered Floating Fruits & Leaves */}
       <div className="absolute top-[10%] left-[5%] opacity-20 pointer-events-none select-none z-10 animate-pulse text-5xl">
         🌿
@@ -35,7 +35,7 @@ export default function Hero() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-8 relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-12 lg:pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-8 lg:pb-4">
           
           {/* Left Text Column */}
           <motion.div 
