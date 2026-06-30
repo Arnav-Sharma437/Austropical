@@ -10,32 +10,55 @@ import Showcase from "@/components/sections/Showcase";
 import GrabGoPacks from "@/components/sections/GrabGoPacks";
 import NewsletterCTA from "@/components/sections/NewsletterCTA";
 
+import { motion } from "framer-motion";
+
 export default function Home() {
+  const scrollReveal = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.8, ease: "easeOut" as any }
+  };
+
   return (
     <div className="overflow-visible bg-[#FDF6ED]">
       {/* SECTION 1: Hero */}
       <Hero />
 
       {/* SECTION 2: Our Finest Flavours (Product Carousel) */}
-      <FeaturedProducts />
+      <motion.div {...scrollReveal}>
+        <FeaturedProducts />
+      </motion.div>
 
       {/* SECTION 3: Feature Strip (4 columns) */}
-      <FeatureStrip />
+      <motion.div {...scrollReveal}>
+        <FeatureStrip />
+      </motion.div>
 
       {/* SECTION 4: Crafted for the Sun-Chasers (Brand Story) */}
-      <OurStoryTeaser />
+      <motion.div {...scrollReveal}>
+        <OurStoryTeaser />
+      </motion.div>
 
       {/* SECTION 5: Superfruits & Sorbets (Recipe Grid) */}
-      <RecipesGrid />
+      <motion.div {...scrollReveal}>
+        <RecipesGrid />
+      </motion.div>
 
       {/* SECTION 6: Unmatched Excellence (Product Showcase) */}
-      <Showcase />
+      <motion.div {...scrollReveal}>
+        <Showcase />
+      </motion.div>
 
       {/* SECTION 7: Grab & Go Packs (Product Strip) */}
-      <GrabGoPacks />
+      <motion.div {...scrollReveal}>
+        <GrabGoPacks />
+      </motion.div>
 
       {/* SECTION 8: Newsletter CTA */}
-      <NewsletterCTA />
+      <motion.div {...scrollReveal}>
+        <NewsletterCTA />
+      </motion.div>
     </div>
   );
 }

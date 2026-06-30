@@ -38,7 +38,12 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-12 lg:pb-0">
           
           {/* Left Text Column */}
-          <div className="flex flex-col items-start lg:col-span-6 mt-8 lg:mt-0">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col items-start lg:col-span-6 mt-8 lg:mt-0"
+          >
             {/* Top Ribbon Shape Badge */}
             <div className="bg-[#2D1B4E] text-white text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-2 rounded-md mb-6 shadow-md relative flex items-center">
               <span className="relative z-10">REAL FRUIT, REAL GOODNESS</span>
@@ -88,7 +93,7 @@ export default function Hero() {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Product & Bowl Column */}
           <div className="relative lg:col-span-6 flex justify-center items-end h-[400px] sm:h-[500px] lg:h-[600px] w-full">

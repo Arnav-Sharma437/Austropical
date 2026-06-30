@@ -79,11 +79,23 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#1E1235] text-white py-10 overflow-hidden select-none">
       
-      {/* Decorative palm leaf bottom-right corner, low opacity, partially cropped */}
-      <div className="absolute right-[-40px] bottom-[-40px] w-64 h-64 text-[#FF6B00] opacity-5 pointer-events-none z-10 rotate-[35deg]">
+      {/* Decorative cherries, blueberries, and palm leaf at the edges */}
+      <div className="absolute right-[-40px] bottom-[-40px] w-64 h-64 text-[#FF6B00] opacity-[0.04] pointer-events-none z-10 rotate-[35deg]">
         <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
           <path d="M50 90 C50 60 40 30 15 15 C35 30 45 55 50 90 Z M50 90 C50 60 60 30 85 15 C65 30 55 55 50 90 Z M50 90 C48 65 30 45 10 40 C30 50 45 68 50 90 Z M50 90 C52 65 70 45 90 40 C70 50 55 68 50 90 Z" />
         </svg>
+      </div>
+      <div className="absolute left-4 top-6 opacity-[0.25] pointer-events-none select-none z-10 text-4xl animate-bounce">
+        🍒
+      </div>
+      <div className="absolute left-16 top-16 opacity-[0.2] pointer-events-none select-none z-10 text-3xl">
+        🫐
+      </div>
+      <div className="absolute right-6 top-6 opacity-[0.25] pointer-events-none select-none z-10 text-4xl animate-pulse">
+        🌿
+      </div>
+      <div className="absolute right-20 top-16 opacity-[0.2] pointer-events-none select-none z-10 text-3xl">
+        🍒
       </div>
 
       <div className="mx-auto max-w-7xl px-6 md:px-8 relative z-20">
