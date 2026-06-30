@@ -40,9 +40,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Animated Walking Banner */}
-      <WalkingBanner />
-
       {/* 3. Featured Products */}
       <FeaturedProducts />
 
@@ -63,6 +60,9 @@ export default function Home() {
 
       {/* 8. CTA Banner */}
       <CTABanner />
+
+      {/* Animated Walking Banner */}
+      <WalkingBanner />
     </div>
   );
 }

@@ -4,10 +4,10 @@ import React from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const IMAGES = [
-  { src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/1.02464a56.png', bg: '#F4845F', panel: '#F79B7F' },
-  { src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/2.b977faab.png', bg: '#6BBF7A', panel: '#85CC92' },
-  { src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/3.4df853b4.png', bg: '#E882B4', panel: '#ED9DC4' },
-  { src: 'https://fifth-gentle-45902158.figma.site/_components/v2/4de492f6d9cf8244ad5293233e5c6f52407d42fc/4.4457fbce.png', bg: '#6EB5FF', panel: '#8DC4FF' },
+  { src: '/hero/toon-1.png', bg: '#F4845F', panel: '#F79B7F' },
+  { src: '/hero/toon-2.png', bg: '#6BBF7A', panel: '#85CC92' },
+  { src: '/hero/toon-3.png', bg: '#E882B4', panel: '#ED9DC4' },
+  { src: '/hero/toon-4.png', bg: '#6EB5FF', panel: '#8DC4FF' },
 ];
 
 export default function Hero() {

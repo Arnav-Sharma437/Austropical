@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-// Generate parallel wavy ribbon clip path coordinates dynamically for mobile:
-// Top wave centers around Y=20, bottom wave centers around Y=72.
-// Amplitude is 12px, wavelength is 120px.
-// Ribbon height is exactly 52px.
+// Generate parallel wavy ribbon clip path coordinates dynamically for mobile & desktop:
+// Top wave centers around Y=20, bottom wave centers around Y=64.
+// Amplitude is 10px, wavelength is 120px.
+// Ribbon height is exactly 44px.
 const generateMobileFlagPath = () => {
   let topPath = `M 0 20`;
   const waveLength = 120;
@@ -13,23 +13,22 @@ const generateMobileFlagPath = () => {
   
   for (let i = 0; i < numWaves; i++) {
     const x = i * waveLength;
-    topPath += ` Q ${x + 30} 8, ${x + 60} 20 Q ${x + 90} 32, ${x + 120} 20`;
+    topPath += ` Q ${x + 30} 10, ${x + 60} 20 Q ${x + 90} 30, ${x + 120} 20`;
   }
   
   const endX = numWaves * waveLength;
-  let bottomPath = ` L ${endX} 72`;
+  let bottomPath = ` L ${endX} 64`;
   
   for (let i = numWaves - 1; i >= 0; i--) {
     const x = i * waveLength;
-    bottomPath += ` Q ${x + 90} 84, ${x + 60} 72 Q ${x + 30} 60, ${x} 72`;
+    bottomPath += ` Q ${x + 90} 74, ${x + 60} 64 Q ${x + 30} 54, ${x} 64`;
   }
   
-  bottomPath += ` L 0 72 Z`;
+  bottomPath += ` L 0 64 Z`;
   return topPath + bottomPath;
 };
 
 const FLAG_PATH_MOBILE = generateMobileFlagPath();
-
 
 const Character = () => (
   <div style={{ position: 'relative', width: 80, height: 130 }}>
@@ -124,10 +123,10 @@ const Character = () => (
     {/* Flagpole - slanted up-left */}
     <div style={{
       position: 'absolute',
-      top: -45,
+      top: -35,
       left: -12,
       width: 4,
-      height: 105,
+      height: 95,
       background: '#2D1B69',
       borderRadius: 2,
       transform: 'rotate(-8deg)',
@@ -138,10 +137,10 @@ const Character = () => (
     {/* Wavy flag banner trailing to the right from the pole top */}
     <div style={{
       position: 'absolute',
-      top: -53,
+      top: -46,
       left: -26,
       width: '120vw',
-      height: 95,
+      height: 80,
       background: '#2D1B69',
       clipPath: `path('${FLAG_PATH_MOBILE}')`,
       display: 'flex',
@@ -159,10 +158,10 @@ const Character = () => (
         animation: 'flag-text-scroll 10s linear infinite',
         color: 'white',
         fontWeight: 900,
-        fontSize: 14,
+        fontSize: 13,
         letterSpacing: 1,
         fontFamily: 'Fredoka One, sans-serif',
-        marginTop: 10,
+        marginTop: 8,
       }}>
         {[
           '⚡ 100% VEGAN',
@@ -187,7 +186,7 @@ const WavyFlagMobile = () => (
   <div style={{
     position: 'relative',
     width: '100%',
-    height: 95,
+    height: 80,
     background: '#2D1B69',
     clipPath: `path('${FLAG_PATH_MOBILE}')`,
     display: 'flex',
@@ -204,10 +203,10 @@ const WavyFlagMobile = () => (
       animation: 'flag-text-scroll 12s linear infinite',
       color: 'white',
       fontWeight: 900,
-      fontSize: 14,
+      fontSize: 13,
       letterSpacing: 1,
       fontFamily: 'Fredoka One, sans-serif',
-      marginTop: 10,
+      marginTop: 8,
     }}>
       {[
         '⚡ 100% VEGAN',
