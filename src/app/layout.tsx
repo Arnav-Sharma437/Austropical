@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Nunito } from "next/font/google";
+import { Fredoka, Nunito, Anton, Inter } from "next/font/google";
 import "../styles/globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
@@ -22,6 +22,20 @@ const nunito = Nunito({
   display: "swap",
 });
 
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Austropical | Australia's Brighter Snack Choice",
   description: "Premium tropical superfood ice cream and acai bowls. 100% vegan, gluten-free, organic, and crafted under the Australian sun.",
@@ -34,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${nunito.variable} scroll-smooth`}>
+    <html lang="en" className={`${fredoka.variable} ${nunito.variable} ${anton.variable} ${inter.variable} scroll-smooth`}>
       <body className="antialiased">
         <CartProvider>
           <SmoothScrollProvider>

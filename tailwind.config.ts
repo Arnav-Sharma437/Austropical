@@ -21,6 +21,8 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-display)', 'sans-serif'],
         body: ['var(--font-body)', 'sans-serif'],
+        anton: ['var(--font-anton)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
       borderRadius: {
         '4xl': '2rem',
