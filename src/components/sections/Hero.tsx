@@ -131,27 +131,27 @@ export default function Hero() {
           }}
         />
 
-        {/* 2. Giant ghost text "3D SHAPE" */}
+        {/* 2. Giant ghost text "AUSTROPICAL" */}
         <div className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none z-[2] top-[18%]">
           <span
             style={{
-              fontSize: "clamp(90px, 28vw, 380px)",
+              fontSize: "clamp(90px, 24vw, 350px)",
               lineHeight: 1,
               letterSpacing: "-0.02em",
             }}
             className="font-anton font-black uppercase text-white opacity-100 whitespace-nowrap"
           >
-            3D SHAPE
+            AUSTROPICAL
           </span>
         </div>
 
-        {/* 3. Top-left brand label "TOONHUB x AUSTROPICAL" */}
+        {/* 3. Top-left brand label "AUSTROPICAL" */}
         <div className="absolute top-8 left-6 sm:left-12 z-[60] flex flex-col gap-1">
           <span className="text-xs font-bold uppercase text-white opacity-90 tracking-[0.18em] font-inter">
-            TOONHUB
+            AUSTROPICAL
           </span>
           <span className="text-[9px] font-bold uppercase text-white/70 tracking-[0.25em] font-inter">
-            × AUSTROPICAL COLLAB
+            PREMIUM SUPERFOODS
           </span>
         </div>
 
@@ -185,23 +185,23 @@ export default function Hero() {
         {/* 5. Bottom-left text + nav buttons */}
         <div className="absolute bottom-8 left-6 sm:bottom-20 sm:left-24 z-[60] max-w-[320px] flex flex-col items-start">
           <p className="font-inter font-black uppercase text-white opacity-95 text-base sm:text-[22px] tracking-[0.02em] mb-2 sm:mb-3">
-            TOONHUB FIGURINES
+            AUSTROPICAL SUPERFOODS
           </p>
           <p className="hidden sm:block font-inter text-xs sm:text-sm text-white opacity-85 leading-[1.6] mb-5">
-            The artwork is stunning, shipped fully prepared. The finish is a vision, the 3D craft is flawless. Many thanks! Wishing you the win. Order now.
+            Premium tropical superfood ice cream and acai bowls. Made in Australia, 100% plant-powered, zero dairy, certified organic, and crafted under the sun. Order now.
           </p>
           <div className="flex gap-4">
             <button
               onClick={() => navigate("prev")}
               className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white flex items-center justify-center text-white hover:scale-[1.08] hover:bg-white/10 active:scale-95 transition-all duration-150"
-              aria-label="Previous figurine"
+              aria-label="Previous slide"
             >
               <ArrowLeft className="w-[26px] h-[26px]" strokeWidth={2.25} />
             </button>
             <button
               onClick={() => navigate("next")}
               className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white flex items-center justify-center text-white hover:scale-[1.08] hover:bg-white/10 active:scale-95 transition-all duration-150"
-              aria-label="Next figurine"
+              aria-label="Next slide"
             >
               <ArrowRight className="w-[26px] h-[26px]" strokeWidth={2.25} />
             </button>
