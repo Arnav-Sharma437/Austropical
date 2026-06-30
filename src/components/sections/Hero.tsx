@@ -18,20 +18,20 @@ export default function Hero() {
   return (
     <div className="relative w-full overflow-hidden bg-gradient-to-br from-[#FF8C2E] to-[#FF4F8B] pt-24 lg:pt-32">
       {/* Scattered Floating Fruits & Leaves */}
-      <div className="absolute top-[10%] left-[5%] opacity-20 pointer-events-none select-none z-10 animate-pulse">
-        <Image src="/fruits/leaf.png" alt="Leaf" width={100} height={100} className="w-16 h-16 object-contain" />
+      <div className="absolute top-[10%] left-[5%] opacity-20 pointer-events-none select-none z-10 animate-pulse text-5xl">
+        🌿
       </div>
-      <div className="absolute top-[15%] right-[8%] opacity-20 pointer-events-none select-none z-10">
-        <Image src="/fruits/leaf.png" alt="Leaf" width={100} height={100} className="w-20 h-20 object-contain rotate-90" />
+      <div className="absolute top-[15%] right-[8%] opacity-20 pointer-events-none select-none z-10 text-6xl rotate-90">
+        🌿
       </div>
-      <div className="absolute bottom-[20%] left-[4%] pointer-events-none select-none z-10 hover:scale-110 transition-transform">
-        <Image src="/fruits/strawberry.png" alt="Strawberry" width={120} height={120} className="w-24 h-24 object-contain" />
+      <div className="absolute bottom-[20%] left-[4%] pointer-events-none select-none z-10 hover:scale-110 transition-transform text-7xl">
+        🍓
       </div>
-      <div className="absolute top-[35%] left-[2%] opacity-80 pointer-events-none select-none z-10 animate-bounce">
-        <Image src="/fruits/blueberry.png" alt="Blueberry" width={50} height={50} className="w-10 h-10 object-contain" />
+      <div className="absolute top-[35%] left-[2%] opacity-80 pointer-events-none select-none z-10 animate-bounce text-4xl">
+        🫐
       </div>
-      <div className="absolute bottom-[35%] right-[2%] opacity-90 pointer-events-none select-none z-10">
-        <Image src="/fruits/blueberry.png" alt="Blueberry" width={60} height={60} className="w-12 h-12 object-contain" />
+      <div className="absolute bottom-[35%] right-[2%] opacity-90 pointer-events-none select-none z-10 text-5xl">
+        🫐
       </div>
 
       <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-8 relative z-20">
@@ -46,10 +46,10 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="flex flex-col text-left font-display font-black leading-none tracking-tight select-none">
-              <span className="text-[75px] sm:text-[100px] md:text-[120px] text-white">AÇAÍ</span>
-              <span className="text-[55px] sm:text-[75px] md:text-[90px] text-[#2D1B4E]">SUPERFOOD</span>
-              <span className="text-[45px] sm:text-[60px] md:text-[70px] text-white">ICE CREAM</span>
+            <h1 className="flex flex-col text-left font-display font-black tracking-tight select-none gap-1" style={{ lineHeight: 0.95 }}>
+              <span className="hero-outline-text text-white" style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)", fontWeight: 900 }}>AÇAÍ</span>
+              <span className="text-[#2D1B4E]" style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)", fontWeight: 900 }}>SUPERFOOD</span>
+              <span className="hero-outline-text text-white" style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", fontWeight: 900 }}>ICE CREAM</span>
             </h1>
 
             {/* Subtext */}

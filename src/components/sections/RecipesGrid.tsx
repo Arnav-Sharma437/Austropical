@@ -10,32 +10,32 @@ const RECIPES = [
   {
     title: "Mango Coconut Bliss",
     desc: "Mango, coconut & pineapple for a tropical burst.",
-    image: "/hero/toon-3.webp"
+    image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=150&h=150&fit=crop&q=80"
   },
   {
     title: "Green Harmony",
     desc: "A refreshing blend of greens, apple & lime.",
-    image: "/hero/toon-4.webp"
+    image: "https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?w=150&h=150&fit=crop&q=80"
   },
   {
     title: "Berry Radiance",
     desc: "A vibrant mix of berries for a naturally sweet delight.",
-    image: "/hero/toon-2.webp"
+    image: "https://images.unsplash.com/photo-1513612254195-b27a3f45bb68?w=150&h=150&fit=crop&q=80"
   },
   {
     title: "Citrus Splash",
     desc: "Zesty lemon, orange & passionfruit for a tangy twist.",
-    image: "/hero/toon-3.webp"
+    image: "https://images.unsplash.com/photo-1557800636-894a64c1696f?w=150&h=150&fit=crop&q=80"
   },
   {
     title: "Golden Glow",
     desc: "Turmeric, ginger & pineapple for an immunity boost.",
-    image: "/hero/toon-1.webp"
+    image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=150&h=150&fit=crop&q=80"
   },
   {
     title: "Dragon Delight",
     desc: "Dragon fruit, berries & coconut for a refreshing indulgence.",
-    image: "/hero/toon-2.webp"
+    image: "https://images.unsplash.com/photo-1527324688151-0e627063f291?w=150&h=150&fit=crop&q=80"
   }
 ]
 
@@ -66,16 +66,13 @@ export default function RecipesGrid() {
               className="bg-white/10 hover:bg-white/20 border border-white/10 rounded-2xl p-5 flex items-center gap-4 transition-colors duration-300"
             >
               {/* Recipe Image Preview */}
-              <div className="relative w-20 h-20 bg-white/20 rounded-xl overflow-hidden shrink-0 flex items-center justify-center border border-white/10">
-                <div className="relative w-16 h-16">
-                  <Image 
-                    src={recipe.image} 
-                    alt={recipe.title} 
-                    fill 
-                    className="object-contain object-center drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]"
-                    unoptimized
-                  />
-                </div>
+              <div className="relative w-20 h-20 bg-white/20 rounded-xl overflow-hidden shrink-0 border border-white/10">
+                <Image 
+                  src={recipe.image} 
+                  alt={recipe.title} 
+                  fill 
+                  className="object-cover"
+                />
               </div>
 
               {/* Recipe Text Details */}

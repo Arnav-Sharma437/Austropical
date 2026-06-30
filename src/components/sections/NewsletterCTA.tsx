@@ -22,11 +22,10 @@ export default function NewsletterCTA() {
       {/* Decorative Acai Bowl Bottom-Right */}
       <div className="absolute right-[-100px] bottom-[-80px] w-64 h-64 opacity-80 pointer-events-none select-none z-10 hidden sm:block">
         <Image 
-          src="/hero/toon-1.webp" 
+          src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=500&q=80" 
           alt="Acai Bowl Decor" 
           fill
-          className="object-contain object-bottom scale-110"
-          unoptimized
+          className="object-cover rounded-full"
         />
       </div>
 

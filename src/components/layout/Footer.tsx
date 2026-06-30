@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Heart } from "lucide-react";
-import MagneticButton from "../ui/MagneticButton";
 
 const InstagramIcon = ({ size = 16 }: { size?: number }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -23,6 +21,12 @@ const FacebookIcon = ({ size = 16 }: { size?: number }) => (
 const TikTokIcon = ({ size = 16 }: { size?: number }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor">
     <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.86 1.08 2.07 1.8 3.4 2.06v4.03c-1.89-.07-3.73-.83-5.13-2.12v7.07c.06 4.67-4.42 8.79-9.19 7.82-3.83-.78-6.66-4.66-5.83-8.62.62-2.95 3.19-5.18 6.22-5.12.82-.01 1.64.15 2.41.47V.02zm-2.41 12.02c-1.92-.05-3.66 1.49-3.83 3.42-.23 2.66 2.37 4.79 4.93 4.07 1.63-.46 2.53-2.2 2.31-3.83v-3.66z"/>
+  </svg>
+);
+
+const PinterestIcon = ({ size = 16 }: { size?: number }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor">
+    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.4 7.62 11.17-.1-.95-.2-2.4.04-3.44.22-.94 1.4-5.95 1.4-5.95s-.36-.72-.36-1.78c0-1.67.97-2.92 2.18-2.92 1.03 0 1.52.77 1.52 1.69 0 1.03-.66 2.58-1 4.01-.28 1.2.6 2.18 1.78 2.18 2.14 0 3.79-2.26 3.79-5.52 0-2.89-2.08-4.91-5.04-4.91-3.43 0-5.45 2.57-5.45 5.23 0 1.04.4 2.15.9 2.76.1.12.11.23.08.35-.09.37-.29 1.18-.33 1.34-.05.2-.18.25-.42.14-1.57-.73-2.55-3.02-2.55-4.86 0-3.96 2.88-7.6 8.3-7.6 4.36 0 7.74 3.1 7.74 7.25 0 4.33-2.73 7.82-6.52 7.82-1.27 0-2.47-.66-2.88-1.44 0 0-.63 2.4-.78 2.99-.28 1.08-1.04 2.43-1.56 3.27C9.62 23.78 10.78 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/>
   </svg>
 );
 
@@ -73,25 +77,25 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-[#1E1235] text-white pt-20 pb-8 overflow-hidden select-none">
+    <footer className="relative bg-[#1E1235] text-white py-10 overflow-hidden select-none">
       
-      {/* Decorative leaf bottom-right */}
-      <div className="absolute right-[-30px] bottom-[-20px] w-48 h-48 text-[#FF6B00] opacity-5 pointer-events-none z-10 rotate-[45deg]">
+      {/* Decorative palm leaf bottom-right corner, low opacity, partially cropped */}
+      <div className="absolute right-[-40px] bottom-[-40px] w-64 h-64 text-[#FF6B00] opacity-5 pointer-events-none z-10 rotate-[35deg]">
         <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
-          <path d="M50 10 C30 10 15 25 15 45 C15 52 18 60 22 66 C21 68 18 69 16 68 C14 67 11 62 10 58 C9 56 7 57 8 59 C10 65 14 71 18 73 C20 74 21 73 22 71 C26 77 32 82 40 85 C39 82 37 77 37 73 C37 71 39 70 41 71 C42 72 44 76 45 81 C47 84 49 86 50 87 C51 86 53 84 55 81 C56 76 58 72 59 71 C61 70 63 71 63 73 C63 77 61 82 60 85 C68 82 74 77 78 71 C79 73 80 74 82 73 C86 71 90 65 92 59 C93 57 91 56 90 58 C89 62 86 67 84 68 C82 69 79 68 78 66 C82 60 85 52 85 45 C85 25 70 10 50 10 Z" />
+          <path d="M50 90 C50 60 40 30 15 15 C35 30 45 55 50 90 Z M50 90 C50 60 60 30 85 15 C65 30 55 55 50 90 Z M50 90 C48 65 30 45 10 40 C30 50 45 68 50 90 Z M50 90 C52 65 70 45 90 40 C70 50 55 68 50 90 Z" />
         </svg>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 md:px-8 relative z-20">
         
-        {/* Main Footer Row */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 border-b border-white/10 pb-16">
+        {/* Compact 5-Column Single Row Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start pb-8">
           
-          {/* Logo Area */}
-          <div className="flex flex-col gap-4 lg:col-span-2">
+          {/* Column 1 (Wider layout matching) */}
+          <div className="flex flex-col gap-3 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 max-w-max">
               {logoSrc ? (
-                <div className="relative h-12 w-40 flex items-center brightness-0 invert">
+                <div className="relative h-9 w-32 flex items-center brightness-0 invert">
                   <Image
                     src={logoSrc}
                     alt="austropical logo"
@@ -101,48 +105,56 @@ export default function Footer() {
                   />
                 </div>
               ) : (
-                <span className="font-display text-3xl font-black lowercase tracking-tighter text-white">
-                  austropical
-                </span>
+                <>
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 2C12 2 15 6 15 11C15 14 13.5 17 11 21C11 21 8 18 8 13C8 8.5 10 5 12 2Z"
+                      fill="#FF6B00"
+                    />
+                    <path
+                      d="M12 2C12 2 9 6 9 11C9 14 10.5 17 13 21C13 21 16 18 16 13C16 8.5 14 5 12 2Z"
+                      fill="#FF1493"
+                      opacity="0.85"
+                      style={{ mixBlendMode: "screen" }}
+                    />
+                  </svg>
+                  <span className="font-display text-lg font-black lowercase tracking-tighter text-white">
+                    AUSTROPICAL
+                  </span>
+                </>
               )}
             </Link>
             
-            <div className="font-display text-[10px] font-black tracking-[0.25em] text-[#FF6B00] uppercase mt-1">
-              WILDLY NATURAL
-            </div>
-            
-            <p className="max-w-xs text-sm text-white/70 leading-relaxed font-body mt-2">
-              Australia's premium tropical superfood ice cream. 100% Vegan. Gluten-free. Certified organic.
+            <p className="text-[11px] text-white/70 leading-relaxed font-body">
+              Australian superfoods inspired by nature. Made for a healthier and happier you.
             </p>
             
-            {/* Social Links */}
-            <div className="flex items-center gap-3 mt-4">
-              <MagneticButton className="h-10 w-10 rounded-full border border-white/20 text-white hover:border-[#FF6B00] hover:bg-[#FF6B00] transition-colors duration-300">
-                <InstagramIcon size={18} />
-              </MagneticButton>
-              <MagneticButton className="h-10 w-10 rounded-full border border-white/20 text-white hover:border-[#FF6B00] hover:bg-[#FF6B00] transition-colors duration-300">
-                <FacebookIcon size={18} />
-              </MagneticButton>
-              <MagneticButton className="h-10 w-10 rounded-full border border-white/20 text-white hover:border-[#FF6B00] hover:bg-[#FF6B00] transition-colors duration-300">
-                <TikTokIcon size={18} />
-              </MagneticButton>
-              <a href="mailto:hello@austropical.com">
-                <MagneticButton className="h-10 w-10 rounded-full border border-white/20 text-white hover:border-[#FF6B00] hover:bg-[#FF6B00] transition-colors duration-300">
-                  <Mail size={18} />
-                </MagneticButton>
-              </a>
+            {/* Social Icons row */}
+            <div className="flex items-center gap-2.5 mt-2">
+              <Link href="https://instagram.com" className="w-7 h-7 rounded-full border border-white/20 text-white hover:border-[#FFB627] hover:bg-[#FFB627] hover:text-[#1E1235] transition-all flex items-center justify-center">
+                <InstagramIcon size={14} />
+              </Link>
+              <Link href="https://facebook.com" className="w-7 h-7 rounded-full border border-white/20 text-white hover:border-[#FFB627] hover:bg-[#FFB627] hover:text-[#1E1235] transition-all flex items-center justify-center">
+                <FacebookIcon size={14} />
+              </Link>
+              <Link href="https://tiktok.com" className="w-7 h-7 rounded-full border border-white/20 text-white hover:border-[#FFB627] hover:bg-[#FFB627] hover:text-[#1E1235] transition-all flex items-center justify-center">
+                <TikTokIcon size={14} />
+              </Link>
+              <Link href="https://pinterest.com" className="w-7 h-7 rounded-full border border-white/20 text-white hover:border-[#FFB627] hover:bg-[#FFB627] hover:text-[#1E1235] transition-all flex items-center justify-center">
+                <PinterestIcon size={14} />
+              </Link>
             </div>
           </div>
 
-          {/* SHOP Column */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display text-xs font-black uppercase tracking-widest text-[#FFB627]">
+          {/* Column 2: SHOP */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display text-[11px] font-black uppercase tracking-wider text-[#FFB627]">
               SHOP
             </h4>
-            <ul className="flex flex-col gap-2.5 font-body text-sm text-white/70">
+            <ul className="flex flex-col gap-2 font-body text-xs text-white/80">
               {SHOP_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-brand-orange transition-colors">
+                  <Link href={link.href} className="hover:text-white hover:underline transition-all">
                     {link.label}
                   </Link>
                 </li>
@@ -150,15 +162,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ABOUT Column */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display text-xs font-black uppercase tracking-widest text-[#FFB627]">
+          {/* Column 3: ABOUT */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display text-[11px] font-black uppercase tracking-wider text-[#FFB627]">
               ABOUT
             </h4>
-            <ul className="flex flex-col gap-2.5 font-body text-sm text-white/70">
+            <ul className="flex flex-col gap-2 font-body text-xs text-white/80">
               {ABOUT_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-brand-orange transition-colors">
+                  <Link href={link.href} className="hover:text-white hover:underline transition-all">
                     {link.label}
                   </Link>
                 </li>
@@ -166,15 +178,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* SUPPORT Column */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display text-xs font-black uppercase tracking-widest text-[#FFB627]">
+          {/* Column 4: SUPPORT */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display text-[11px] font-black uppercase tracking-wider text-[#FFB627]">
               SUPPORT
             </h4>
-            <ul className="flex flex-col gap-2.5 font-body text-sm text-white/70">
+            <ul className="flex flex-col gap-2 font-body text-xs text-white/80">
               {SUPPORT_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="hover:text-brand-orange transition-colors">
+                  <Link href={link.href} className="hover:text-white hover:underline transition-all">
                     {link.label}
                   </Link>
                 </li>
@@ -182,14 +194,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* GET IN TOUCH Column (Rendered at Say Hello position) */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display text-xs font-black uppercase tracking-widest text-[#FFB627]">
+          {/* Column 5: GET IN TOUCH */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display text-[11px] font-black uppercase tracking-wider text-[#FFB627]">
               GET IN TOUCH
             </h4>
-            <ul className="flex flex-col gap-2.5 font-body text-sm text-white/70">
+            <ul className="flex flex-col gap-2 font-body text-xs text-white/80">
               <li>
-                <a href="mailto:hello@austropical.com" className="hover:text-brand-orange transition-colors">
+                <a href="mailto:hello@austropical.com" className="hover:text-white hover:underline transition-all">
                   hello@austropical.com
                 </a>
               </li>
@@ -205,9 +217,9 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom Strip */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 text-center md:flex-row text-xs text-white/40 font-body">
-          <p className="w-full text-center tracking-wide leading-relaxed font-display font-semibold uppercase">
-            REAL FRUIT • PLANT-BASED • CLEAN INGREDIENTS • GOOD VIBES • MADE FOR YOU • Made with <Heart size={10} className="inline text-[#E91E63] fill-current" /> in Australia
+        <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-center">
+          <p className="text-[10px] sm:text-xs text-white/50 text-center tracking-wide leading-relaxed font-display font-semibold uppercase whitespace-pre-line md:whitespace-nowrap">
+            REAL FRUIT  ·  PLANT-BASED  ·  CLEAN INGREDIENTS  ·  GOOD VIBES  ·  MADE FOR YOU  ·  Made with ❤️ in Australia
           </p>
         </div>
 
