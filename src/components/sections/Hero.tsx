@@ -45,16 +45,16 @@ export default function Hero() {
             className="flex flex-col items-start lg:col-span-6 mt-8 lg:mt-0"
           >
             {/* Top Ribbon Shape Badge */}
-            <div className="bg-[#2D1B4E] text-white text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-2 rounded-md mb-6 shadow-md relative flex items-center">
+            <div className="bg-[#2D1B4E] text-white text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-2 rounded-md mb-6 shadow-md relative flex items-center rotate-[-3deg] origin-left">
               <span className="relative z-10">REAL FRUIT, REAL GOODNESS</span>
               <div className="absolute top-0 right-full h-full w-2 bg-[#2D1B4E] origin-right skew-y-12" />
             </div>
 
             {/* Headline */}
-            <h1 className="flex flex-col text-left font-display font-black tracking-tight select-none gap-1" style={{ lineHeight: 0.95 }}>
-              <span className="hero-outline-text text-white" style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)", fontWeight: 900 }}>AÇAÍ</span>
-              <span className="text-[#2D1B4E]" style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)", fontWeight: 900 }}>SUPERFOOD</span>
-              <span className="hero-outline-text text-white" style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", fontWeight: 900 }}>ICE CREAM</span>
+            <h1 className="flex flex-col text-left font-anton font-black tracking-tight select-none gap-1" style={{ lineHeight: 0.95 }}>
+              <span className="hero-outline-text text-white" style={{ fontSize: "clamp(4.2rem, 9vw, 8rem)", fontWeight: 900, letterSpacing: "-0.01em" }}>AÇAÍ</span>
+              <span className="text-[#2D1B4E]" style={{ fontSize: "clamp(4.2rem, 9vw, 8rem)", fontWeight: 900, letterSpacing: "-0.01em" }}>SUPERFOOD</span>
+              <span className="hero-outline-text text-white" style={{ fontSize: "clamp(3.2rem, 7.5vw, 6.2rem)", fontWeight: 900, letterSpacing: "-0.01em" }}>ICE CREAM</span>
             </h1>
 
             {/* Subtext */}
@@ -78,18 +78,24 @@ export default function Hero() {
             </div>
 
             {/* Bottom 3 Trust Icons */}
-            <div className="mt-10 pt-6 border-t border-white/20 w-full flex flex-wrap gap-6 text-white select-none">
-              <div className="flex items-center gap-2 text-xs font-bold font-display uppercase tracking-wider">
-                <Leaf size={16} className="text-[#2D1B4E]" />
-                <span>100% Vegan</span>
+            <div className="mt-10 pt-6 border-t border-white/20 w-full grid grid-cols-3 gap-4 text-white select-none">
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-white/5">
+                  <Leaf size={18} className="text-white" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider font-display">100% Vegan</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-bold font-display uppercase tracking-wider">
-                <Shield size={16} className="text-[#2D1B4E]" />
-                <span>Gluten Free</span>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-white/5">
+                  <Shield size={18} className="text-white" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider font-display">Gluten Free</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-bold font-display uppercase tracking-wider">
-                <Award size={16} className="text-[#2D1B4E]" />
-                <span>Certified Organic</span>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-white/5">
+                  <Award size={18} className="text-white" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider font-display">Certified Organic</span>
               </div>
             </div>
 
@@ -135,7 +141,7 @@ export default function Hero() {
                 src="/hero/toon-1.webp" 
                 alt="Austropical Acai Bowl & Premium Tubs" 
                 fill 
-                className="object-contain object-bottom select-none pointer-events-none drop-shadow-[0_25px_30px_rgba(0,0,0,0.35)]" 
+                className="object-contain object-bottom select-none pointer-events-none drop-shadow-[0_25px_30px_rgba(0,0,0,0.35)] scale-[1.12] origin-bottom" 
                 priority
               />
             </motion.div>
